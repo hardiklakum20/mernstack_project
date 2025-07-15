@@ -1,0 +1,433 @@
+@font-face {
+  font-family: "satoshi-bold";
+  src: url(../Font/Satoshi-Bold.ttf);
+}
+@font-face {
+  font-family: "satoshi-light";
+  src: url(../Font/Satoshi-Light.ttf);
+}
+@font-face {
+  font-family: "satoshi-medium";
+  src: url(../Font/Satoshi-Medium.ttf);
+}
+@font-face {
+  font-family: "satoshi-regular";
+  src: url(../Font/Satoshi-Regular.ttf);
+}
+.container {
+  max-width: 100%;
+  width: 100%;
+}
+
+.dash1 {
+  background-color: #00a1ff;
+  width: 50%;
+  border-radius: 15px;
+}
+.dash1 .title {
+  font-family: "satoshi-medium";
+  font-size: 22px;
+  color: #fff;
+}
+.dash1 .txt {
+  font-family: "satoshi-regular";
+  color: #fff;
+}
+
+.dash1-sec-bg, .dash2-sec-bg {
+  background-color: #0395EB;
+  padding: 5px 15px;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+  width: 120px;
+  text-align: center;
+}
+.dash1-sec-bg .txt1, .dash2-sec-bg .txt1 {
+  font-family: "satoshi-regular";
+  font-size: 18px;
+  color: #fff;
+  margin-bottom: 0;
+}
+.dash1-sec-bg .txt2, .dash2-sec-bg .txt2 {
+  font-family: "satoshi-regular";
+  color: #fff;
+  margin-bottom: 0;
+}
+
+.dash2-sec-bg {
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-left: 2px;
+}
+
+.dash_img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 230px;
+  margin-top: -20px;
+}
+
+.dash2 {
+  background-color: rgba(255, 102, 146, 0.1882352941);
+  padding: 20px;
+  border-radius: 15px;
+  width: 15%;
+  margin-left: 20px;
+}
+.dash2 .img-bg {
+  background-color: #ff6692;
+  padding: 6px;
+  border-radius: 40%;
+  width: 50px;
+  text-align: center;
+}
+.dash2 .number {
+  font-family: "satoshi-regular";
+  font-size: 18px;
+  margin-top: 50px;
+  color: black;
+}
+.dash2 .number span {
+  font-size: 16px;
+  color: gray;
+}
+.dash2 .txt {
+  font-family: "satoshi-regular";
+  font-size: 17px;
+  margin-top: 10px;
+}
+
+.dash3 {
+  background-color: rgba(137, 101, 229, 0.1254901961);
+  padding: 20px;
+  border-radius: 15px;
+  width: 15%;
+  margin-left: 20px;
+}
+.dash3 .img-bg {
+  background-color: #8965e5;
+  padding: 6px;
+  border-radius: 40%;
+  width: 50px;
+  text-align: center;
+}
+.dash3 .number {
+  font-family: "satoshi-regular";
+  font-size: 18px;
+  margin-top: 50px;
+  color: black;
+}
+.dash3 .number span {
+  font-size: 16px;
+  color: gray;
+}
+.dash3 .txt {
+  font-family: "satoshi-regular";
+  font-size: 17px;
+  margin-top: 10px;
+}
+
+.dash4 {
+  background-color: rgba(0, 206, 182, 0.1450980392);
+  padding: 20px;
+  border-radius: 15px;
+  width: 15%;
+  margin-left: 20px;
+}
+.dash4 .img-bg {
+  background-color: #00ceb6;
+  padding: 6px;
+  border-radius: 40%;
+  width: 50px;
+  text-align: center;
+}
+.dash4 .number {
+  font-family: "satoshi-regular";
+  font-size: 18px;
+  margin-top: 50px;
+  color: black;
+}
+.dash4 .number span {
+  font-size: 16px;
+  color: gray;
+}
+.dash4 .txt {
+  font-family: "satoshi-regular";
+  font-size: 17px;
+  margin-top: 10px;
+}
+
+.dash-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.dash-grid1 {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  height: auto;
+  width: 720px;
+}
+
+.dash-grid2 {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  height: auto;
+  width: 100%;
+}
+
+.apexcharts-menu-icon {
+  display: none;
+}
+
+.dash-title {
+  font-family: "satoshi-medium";
+  font-size: 18px;
+  color: black;
+  font-weight: 500;
+  margin-left: 13px;
+}
+
+.dash-btn-bg {
+  background-color: #EFF4FA;
+  padding: 5px 7px;
+  width: 220px;
+  border-radius: 25px;
+}
+.dash-btn-bg .profit-bg {
+  background-color: #fff;
+  color: black;
+  font-family: "satoshi-regular";
+  font-size: 16px;
+  width: 100px;
+  text-align: center;
+  padding: 3px;
+  border-radius: 20px;
+  margin-right: 10px;
+}
+.dash-btn-bg p {
+  font-family: "satoshi-regular";
+  width: 0;
+  margin-bottom: 0;
+  margin-top: 5px;
+}
+
+.svg-bg, .svg-bg1 {
+  background-color: #DFF3FF;
+  padding: 5px;
+  border-radius: 20px;
+  width: 70px;
+  height: 40px;
+}
+
+.svg-bg1 {
+  background-color: #EFF4FA;
+}
+
+.profit {
+  font-family: "satoshi-regular";
+  font-size: 18px;
+  color: black;
+  margin-bottom: 0;
+}
+
+.profit-txt {
+  font-family: "satoshi-regular";
+  width: 120px;
+}
+
+.view-btn {
+  background-color: #00a1ff;
+  border: none;
+  color: #fff;
+  padding: 0px 5px;
+  border-radius: 25px;
+  width: 120px;
+  height: 40px;
+  font-family: "satoshi-regular";
+  font-size: 16px;
+}
+
+#myTab {
+  background-color: #EFF4FA;
+  padding: 5px 7px;
+  width: auto;
+  border-radius: 25px;
+}
+
+.nav-link.active {
+  background-color: #fff;
+  color: black;
+  font-family: "satoshi-regular";
+  font-size: 16px;
+  text-align: center;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 20px;
+}
+
+.nav-item:focus-visible {
+  outline: none;
+  border: none;
+}
+
+#myTab.nav.nav-tabs {
+  border: none;
+}
+
+.nav-tabs .nav-link {
+  padding: 5px 15px;
+  color: black;
+  border: none;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  margin-bottom: 0;
+}
+
+.nav-tabs .nav-link.active {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  color: black;
+}
+
+.nav-link:focus-visible {
+  box-shadow: none;
+  margin-bottom: 0;
+  border: none;
+  outline: none;
+}
+
+.apexcharts-legend.apx-legend-position-right {
+  display: none;
+}
+
+.product-menu {
+  background-color: transparent;
+  border: none;
+  margin-bottom: 8px;
+}
+
+.dropdown-menu {
+  border-color: transparent;
+  box-shadow: 0 0 rgba(0, 0, 0, 0), 0 0 rgba(0, 0, 0, 0), 0px 1px 4px 0px rgba(133, 146, 173, 0.2);
+}
+
+.dropdown-item:hover {
+  color: #00a1ff;
+}
+
+.best-btn {
+  background-color: rgba(0, 206, 182, 0.1450980392);
+  border: none;
+  color: #00ceb6;
+  padding: 5px 10px;
+  border-radius: 20px;
+  width: 120px;
+}
+
+.circle-txt {
+  font-family: "satoshi-regular";
+  font-size: 17px;
+  color: black;
+  padding-left: 10px;
+}
+
+.circle-bg1, .circle-bg2, .circle-bg3, .circle-bg4 {
+  background-color: #00a1ff;
+  padding: 7px;
+  width: 30px;
+  border-radius: 20px;
+  margin-top: 5px;
+}
+
+.circle-bg2 {
+  background-color: #8965e5;
+}
+
+.circle-bg3 {
+  background-color: #00ceb6;
+}
+
+.circle-bg4 {
+  background-color: #ff6692;
+}
+
+@media screen and (min-width: 680px) and (max-width: 992px) {
+  .dash-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .dash-grid .dash-grid1 {
+    width: 100%;
+  }
+  .circle-bg1, .circle-bg2, .circle-bg3, .circle-bg4 {
+    width: 29px;
+    height: 17px;
+    margin-top: 5px;
+    border-radius: 20px;
+  }
+  .dash1, .dash2, .dash3, .dash4 {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 15px;
+  }
+  .dash2 .number, .dash3 .number, .dash4 .number {
+    margin-top: 10px;
+  }
+  .dash2 .txt, .dash3 .txt, .dash4 .txt {
+    margin: 5px 0px 0px 0px;
+  }
+  .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-center {
+    display: none;
+  }
+}
+@media screen and (min-width: 300px) and (max-width: 576px) {
+  .dash-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .dash-grid .dash-grid1 {
+    min-width: 294px;
+    width: 100%;
+  }
+  .dash-grid .dash-grid2 {
+    min-width: 294px;
+    width: 100%;
+  }
+  .dash1, .dash2, .dash3, .dash4 {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 15px;
+  }
+  #chart {
+    width: 100%;
+  }
+  .apexcharts-legend.apx-legend-position-bottom {
+    display: none;
+  }
+  .circle-bg1, .circle-bg2, .circle-bg3, .circle-bg4 {
+    width: 29px;
+    height: 17px;
+    margin-top: 5px;
+    border-radius: 20px;
+  }
+  .dash_img {
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+  }
+  .view-btn {
+    width: 100%;
+  }
+  .dash2 .number, .dash3 .number, .dash4 .number {
+    margin: 10px 0px 0px;
+  }
+  .dash2 .txt, .dash3 .txt, .dash4 .txt {
+    margin-bottom: 0;
+  }
+}/*# sourceMappingURL=dashboard.css.map */

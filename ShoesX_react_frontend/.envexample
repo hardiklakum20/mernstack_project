@@ -1,0 +1,2 @@
+REACT_APP_URL = http://localhost:1001/api
+REACT_APP_IMAGE = http://localhost:1001

@@ -1,0 +1,265 @@
+@font-face {
+  font-family: "satoshi-bold";
+  src: url(../Font/Satoshi-Bold.ttf);
+}
+@font-face {
+  font-family: "satoshi-light";
+  src: url(../Font/Satoshi-Light.ttf);
+}
+@font-face {
+  font-family: "satoshi-medium";
+  src: url(../Font/Satoshi-Medium.ttf);
+}
+@font-face {
+  font-family: "satoshi-regular";
+  src: url(../Font/Satoshi-Regular.ttf);
+}
+.container {
+  max-width: 100%;
+  width: 100%;
+}
+
+.Category-head {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px #F1F3F6;
+}
+
+#category {
+  font-family: "satoshi-bold";
+  font-size: 22px;
+  margin-bottom: 0;
+}
+
+#add-category-btn {
+  background-color: rgba(0, 161, 255, 0.1254901961);
+  color: #00a1ff;
+  font-family: "satoshi-medium";
+  font-size: 14px;
+  border: none;
+  border-radius: 20px;
+  padding: 5px 15px;
+}
+
+.categroy-description {
+  background-color: #fff;
+  padding: 10px 20px;
+  margin-top: 30px;
+  border-radius: 15px;
+}
+.categroy-description .search-bar {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #E0E6EB;
+  border-radius: 20px;
+  font-family: "satoshi-medium";
+  padding: 8px 15px;
+  margin-top: 20px;
+}
+.categroy-description input:focus {
+  box-shadow: none;
+  outline: none;
+  border-color: #00a1ff;
+}
+
+.product-table {
+  border: 1px solid #e0e6eb;
+  border-radius: 12px;
+  margin-top: 30px;
+}
+.product-table .table {
+  margin: 0px;
+}
+.product-table .table thead tr th {
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-weight: 600;
+  text-wrap: nowrap;
+}
+.product-table .table tbody:last-child tr:last-child {
+  border-color: transparent;
+}
+.product-table .table tbody:last-child tr:last-child td {
+  border-radius: 12px;
+}
+.product-table .table tbody tr .product-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.product-table .table tbody tr .product-name img {
+  width: 56px;
+  height: 56px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+.product-table .table tbody tr .product-name h5 {
+  font-size: 16px;
+  margin: 0px;
+  color: #111c2d;
+  font-weight: 700;
+}
+.product-table .table tbody tr td {
+  font-size: 14px;
+  color: #000000;
+  font-weight: 500;
+  padding: 12px 16px;
+  text-wrap: nowrap;
+}
+.product-table .table tbody tr td p {
+  font-size: 16px;
+  margin: 0px;
+  color: #111c2d;
+  font-weight: 700;
+}
+.product-table .table tbody tr td span, .product-table .table tbody tr td .out-of-stock, .product-table .table tbody tr td .in-stock {
+  padding-left: 15px;
+}
+.product-table .table tbody tr td .in-stock {
+  position: relative;
+}
+.product-table .table tbody tr td .in-stock:before {
+  position: absolute;
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #00ceb6;
+  top: 5px;
+  left: 0px;
+}
+.product-table .table tbody tr td .out-of-stock {
+  position: relative;
+}
+.product-table .table tbody tr td .out-of-stock:before {
+  position: absolute;
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ff6692;
+  top: 5px;
+  left: 0px;
+}
+.product-table .table tbody tr td .dropdown button {
+  border-radius: 50%;
+}
+.product-table .table tbody tr td .dropdown button:hover {
+  background-color: rgba(0, 161, 255, 0.1254901961);
+  color: #00a1ff;
+}
+.product-table .table tbody tr td .dropdown button:active {
+  border-color: none;
+  border: 0px;
+}
+.product-table .table tbody tr td .dropdown .btn.show {
+  border-color: transparent;
+}
+.product-table .table tbody tr td .dropdown .dropdown-menu {
+  padding: 0px;
+  border-color: transparent;
+  box-shadow: 0 0 rgba(0, 0, 0, 0), 0 0 rgba(0, 0, 0, 0), 0px 1px 4px 0px rgba(133, 146, 173, 0.2);
+}
+.product-table .table tbody tr td .dropdown .dropdown-menu li {
+  padding: 8px 16px;
+}
+.product-table .table tbody tr td .dropdown .dropdown-menu li:hover {
+  background-color: rgba(0, 161, 255, 0.1254901961);
+}
+.product-table .table tbody tr td .dropdown .dropdown-menu li:hover a {
+  color: #00a1ff;
+}
+.product-table .table tbody tr td .dropdown .dropdown-menu li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0px;
+  font-size: 14px;
+  color: #111c2d;
+  font-weight: 500;
+}
+.product-table .table tbody tr td .dropdown .dropdown-menu li a:hover {
+  background-color: transparent;
+}
+.product-table .table tbody tr .action {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.product-table .table tbody tr .action i {
+  cursor: pointer;
+}
+
+.category-brand, .status-title {
+  font-family: "satoshi-medium";
+  color: black;
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.star {
+  font-size: 20px;
+  padding-left: 5px;
+  color: red;
+}
+
+.add-category {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #E0E6EB;
+  border-radius: 20px;
+  font-family: "satoshi-medium";
+  padding: 8px 15px;
+}
+.add-category :focus {
+  outline: 2px solid #00A1FF;
+}
+
+#category-select {
+  border-radius: 20px;
+}
+#category-select :focus {
+  outline: 2px solid #00A1FF;
+}
+
+.add-btn, .apply-btn {
+  border: none;
+  background-color: black;
+  color: #fff;
+  font-family: "satoshi-medium";
+  font-size: 17px;
+  padding: 5px 10px;
+  width: 80px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+#select-gender {
+  font-family: "satoshi-regular";
+  font-size: 18px;
+  margin-top: 15px;
+}
+
+.radio-sec {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-switch .form-check-input:checked {
+  background-color: #00A1FF;
+}
+.form-switch .form-check-input {
+  width: 2.5em;
+  height: 1.3em;
+}
+.form-switch .form-check-input:focus {
+  box-shadow: none !important;
+}
+
+.form-select {
+  border-radius: 999px;
+}/*# sourceMappingURL=category.css.map */

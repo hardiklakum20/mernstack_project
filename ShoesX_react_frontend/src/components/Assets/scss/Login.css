@@ -1,0 +1,194 @@
+@font-face {
+  font-family: "satoshi-bold";
+  src: url(../Font/Satoshi-Bold.ttf);
+}
+@font-face {
+  font-family: "satoshi-light";
+  src: url(../Font/Satoshi-Light.ttf);
+}
+@font-face {
+  font-family: "satoshi-medium";
+  src: url(../Font/Satoshi-Medium.ttf);
+}
+@font-face {
+  font-family: "satoshi-regular";
+  src: url(../Font/Satoshi-Regular.ttf);
+}
+.container {
+  max-width: 100%;
+  width: 100%;
+}
+
+.login-side {
+  background-color: #fff;
+  width: 33%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.login-title {
+  font-family: "satoshi-bold";
+  font-size: 45px;
+}
+
+.login-txt {
+  font-family: "satoshi-medium";
+  font-size: 17px;
+  opacity: 75%;
+}
+
+.learn-more-btn {
+  background-color: #fff;
+  padding: 5px;
+  font-family: "satoshi-medium";
+  font-size: 17px;
+  border-radius: 20px;
+  width: 130px;
+  margin-top: 20px;
+}
+
+.login-main {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 67%;
+  color: #fff;
+  flex-direction: column;
+  gap: 30px;
+}
+@media only screen and (max-width: 426px) {
+  .login-main {
+    padding: 0px 20px;
+  }
+}
+.login-main h2 {
+  margin: 0px;
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+  font-size: 30px;
+  text-wrap: nowrap;
+}
+.login-main .login-type {
+  font-family: "satoshi-bold";
+  font-size: 17px;
+  margin-bottom: 5px;
+}
+.login-main .logo {
+  width: 50px;
+  display: flex;
+  justify-self: center;
+  margin-bottom: 30px;
+}
+.login-main .login-sec {
+  max-width: 50%;
+  width: 100%;
+}
+.login-main .input-type {
+  width: 100%;
+  padding: 7px 12px;
+  border-radius: 20px;
+  border: 1px solid gray;
+  background-color: transparent;
+  color: #fff;
+  outline: none;
+}
+.login-main .signin-btn {
+  width: 100%;
+  font-family: "satoshi-medium";
+  font-size: 16px;
+  padding: 8px;
+  border: 1px solid gray;
+  border-radius: 20px;
+  margin-top: 30px;
+}
+.login-main .error-text {
+  font-family: "satoshi-regular";
+  padding-top: 5px;
+  color: red;
+  margin-bottom: 0;
+}
+.login-main form {
+  width: 400px;
+}
+@media only screen and (max-width: 768px) {
+  .login-main form {
+    width: 340px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .login-side {
+    width: 40%;
+  }
+  .login-main {
+    width: 60%;
+  }
+  .login-main .login-sec {
+    max-width: 60%;
+  }
+  .login-main .input-type {
+    padding: 4px 12px;
+  }
+  .login-main .signin-btn {
+    padding: 5px;
+    font-size: 15px;
+  }
+  .login-title {
+    font-size: 30px;
+  }
+  .login-txt {
+    font-size: 15px;
+  }
+  .learn-more-btn {
+    padding: 3px;
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .login-side {
+    display: none;
+  }
+  .login-main {
+    width: 100%;
+  }
+  .login-main .login-sec {
+    max-width: 80%;
+  }
+  .login-main .input-type {
+    padding: 4px 12px;
+  }
+  .login-main .signin-btn {
+    padding: 5px;
+    font-size: 15px;
+  }
+  .login-main .logo {
+    margin-bottom: 12px;
+  }
+  .login-title {
+    font-size: 30px;
+  }
+  .login-txt {
+    font-size: 15px;
+  }
+  .learn-more-btn {
+    padding: 3px;
+    font-size: 15px;
+  }
+  .login-brand {
+    font-family: "satoshi-bold";
+    font-size: 25px;
+    margin-bottom: 0;
+    letter-spacing: 1px;
+  }
+  .login-title {
+    font-family: "satoshi-regular";
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+}/*# sourceMappingURL=Login.css.map */

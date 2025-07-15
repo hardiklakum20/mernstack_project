@@ -1,0 +1,27 @@
+@font-face {
+    font-family:'satoshi-bold';
+    src: url(../Font/Satoshi-Bold.ttf);
+}
+@font-face {
+    font-family:'satoshi-light';
+    src: url(../Font/Satoshi-Light.ttf);
+}
+@font-face {
+    font-family:'satoshi-medium';
+    src: url(../Font/Satoshi-Medium.ttf);
+}
+@font-face {
+    font-family:'satoshi-regular';
+    src: url(../Font/Satoshi-Regular.ttf);
+}
+
+.container{
+    max-width:100%;
+    width:100%;
+}
+
+$primary-font :'satoshi-regular';
+$secondary-font : 'satoshi-bold';
+$third-font : 'satoshi-medium';
+
+$text-color:#fff;

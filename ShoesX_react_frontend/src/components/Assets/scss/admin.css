@@ -1,0 +1,496 @@
+@font-face {
+  font-family: "satoshi-bold";
+  src: url(../Font/Satoshi-Bold.ttf);
+}
+@font-face {
+  font-family: "satoshi-light";
+  src: url(../Font/Satoshi-Light.ttf);
+}
+@font-face {
+  font-family: "satoshi-medium";
+  src: url(../Font/Satoshi-Medium.ttf);
+}
+@font-face {
+  font-family: "satoshi-regular";
+  src: url(../Font/Satoshi-Regular.ttf);
+}
+.container {
+  max-width: 100%;
+  width: 100%;
+}
+
+.container {
+  max-width: 100%;
+  width: 100%;
+}
+
+.brand {
+  font-family: "satoshi-bold";
+  font-size: 30px;
+  color: #000;
+}
+
+.dashboard-icon-sec {
+  border-right: 1px solid #E0E6EB;
+  width: 100px;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 2;
+  overflow: hidden;
+}
+
+#toggle-section {
+  width: 250px;
+  height: 100vh;
+  background-color: #fff;
+  color: black;
+  box-shadow: 5px 0px 10px #F1F3F6;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 120px;
+  transition: left 0.3s ease-in-out;
+  padding: 10px 15px;
+  z-index: 2;
+}
+
+#toggle-section.open {
+  left: 100px;
+}
+
+#toggle-section.closed {
+  left: -250px;
+}
+
+.main-section {
+  margin-left: 100px;
+  width: 100%;
+  padding: 10px;
+  background-color: #F8FAFD;
+  height: 100%;
+  min-height: 100vh;
+  flex-grow: 1;
+  transition: margin-left 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.main-section.full {
+  margin-left: 335px;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #fff;
+  height: 100vh;
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+  transform: translateX(0);
+  z-index: 1;
+}
+
+.sidebar:not(.open) {
+  transform: translateX(-100%);
+}
+
+nav.navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 100px;
+  right: 0;
+  background-color: #F8FAFD;
+  padding: 10px 20px;
+  z-index: 999;
+  transition: left 0.3s ease-in-out;
+}
+
+nav.navbar.full {
+  width: 100%;
+  min-width: 100%;
+  left: 360px;
+}
+
+.content-wrapper {
+  margin-top: 100px;
+  margin-left: 30px;
+  width: 94%;
+  flex-grow: 1;
+}
+
+.close-btn {
+  display: none;
+}
+
+/* Sidebar List */
+.list-section {
+  list-style: none;
+  padding-left: 0;
+}
+
+.list-section {
+  list-style: none;
+  padding-left: 0;
+}
+.list-section .item {
+  font-family: "satoshi-regular";
+  font-size: 20px;
+  color: #000;
+  padding-top: 25px;
+}
+.list-section .item .item-btn {
+  text-decoration: none;
+  color: #000;
+  padding: 4px 20px;
+  border-radius: 20px;
+  background-color: transparent;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: block;
+  width: 100%;
+}
+.list-section .item .item-btn:hover, .list-section .item .item-btn:focus, .list-section .item .item-btn.active {
+  background-color: #DFF3FF;
+  color: #00A1FF;
+}
+.list-section .item .ecommerce-btn {
+  background: none;
+  border: none;
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-left: 0;
+}
+.list-section .item .ecommerce-btn .ecommerce-txt {
+  margin-left: -12px;
+}
+
+.submenu li {
+  list-style-type: disc;
+  margin-top: 10px;
+  margin-left: 10px;
+  color: gray;
+}
+.submenu li a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+.submenu li a.active, .submenu li a:hover {
+  color: #00A1FF;
+}
+
+.category-btn {
+  background-color: black;
+  border: none;
+  padding: 0;
+  color: #000;
+}
+
+.bi-list {
+  font-size: 23px;
+  color: gray;
+  margin-right: 25px;
+}
+
+/* Navbar Icons */
+.search-sec .search-icon {
+  font-size: 20px;
+  color: gray;
+  background-color: transparent;
+  border: none;
+}
+
+.modal.show .modal-dialog {
+  transform: none;
+  z-index: 9999;
+}
+
+.modal-search-bar {
+  width: 100%;
+  border: 1px solid #00A1FF;
+  border-radius: 20px;
+  font-family: "satoshi-medium";
+  padding: 5px 15px;
+  outline: none;
+}
+
+.modal-title {
+  font-family: "satoshi-bold";
+  font-size: 20px;
+}
+
+.modal-link {
+  font-family: "satoshi-regular";
+  font-size: 18px;
+  text-decoration: none;
+  color: black;
+}
+
+.path {
+  font-family: "satoshi-regular";
+  font-size: 16px;
+  color: rgb(75, 73, 73);
+}
+
+.icons1 {
+  margin-left: 35px;
+}
+.icons1 i {
+  font-size: 25px;
+  padding-left: 15px;
+}
+
+.dropdown {
+  cursor: pointer;
+}
+.dropdown img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.dropdown-menu[data-bs-popper] {
+  left: -120px;
+  border-color: transparent;
+  box-shadow: 0 0 rgba(0, 0, 0, 0), 0 0 rgba(0, 0, 0, 0), 0px 1px 4px 0px rgba(133, 146, 173, 0.2);
+}
+.dropdown-menu[data-bs-popper] .dropdown-item:active {
+  color: #212529;
+}
+.dropdown-menu[data-bs-popper] .dropdown-item img {
+  width: 35px;
+  height: 35px;
+}
+
+.flag {
+  margin-top: 5px;
+}
+
+.menu-icon {
+  background-color: black;
+  border: none;
+}
+
+.bi-plus-lg::before {
+  content: "\f64d";
+  color: #fff;
+}
+
+.bi-dash-lg::before {
+  content: "\f63b";
+  color: #fff;
+}
+
+.dashboard-icon-sec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.dashboard-icon-sec .dash-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  margin-bottom: 15px;
+  padding: 10px 0px;
+  width: 50px;
+  color: #000;
+}
+.dashboard-icon-sec .dash-icon-wrapper svg,
+.dashboard-icon-sec .dash-icon-wrapper svg * {
+  stroke: currentColor !important;
+  fill: none !important;
+  transition: stroke 0.2s ease, fill 0.2s ease;
+}
+.dashboard-icon-sec .dash-icon-wrapper:hover, .dashboard-icon-sec .dash-icon-wrapper.active {
+  background-color: rgba(0, 161, 255, 0.1254901961);
+  color: #00a1ff;
+}
+
+.responsive-width.open {
+  width: calc(100% - 100px);
+}
+
+.responsive-width.closed {
+  width: 75%;
+}
+
+@media screen and (min-width: 680px) and (max-width: 992px) {
+  .navbar-toggler {
+    border: none;
+  }
+  .navbar-toggler.Navbar-toggler:focus {
+    box-shadow: none;
+  }
+  #toggle-section {
+    position: fixed;
+    left: -300px;
+    top: 0;
+    width: 300px;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+  }
+  #toggle-section.open {
+    left: 0 !important;
+  }
+  #toggle-section.closed {
+    left: -300px;
+  }
+  .responsive-width.open {
+    width: 100%;
+  }
+  .responsive-width.closed {
+    width: 100%;
+  }
+  .sidebar.open ~ .main-section {
+    margin-left: 250px;
+  }
+  .navbar-nav {
+    padding: 10px;
+  }
+  nav.navbar {
+    left: 0;
+  }
+  nav.navbar.full {
+    left: 0px;
+  }
+  .main-section {
+    width: 100%;
+    margin-left: 0;
+  }
+  .main-section.full {
+    margin-left: 0;
+  }
+  .list-section .item {
+    font-size: 18px;
+  }
+  .close-btn {
+    display: block;
+    background: transparent;
+    color: #000;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    margin-bottom: 15px;
+  }
+  .content-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .icons1 i {
+    margin-left: auto;
+    font-size: 25px;
+  }
+  .dropdown {
+    font-size: 25px;
+  }
+  .list-section .item .ecommerce-btn .ecommerce-txt {
+    margin-left: -55px;
+  }
+  .search-sec .search-icon {
+    font-size: 23px;
+    margin-top: 4px;
+    margin-right: 16px;
+  }
+  .shoes-title {
+    font-family: "satoshi-bold";
+    font-size: 20px;
+    margin-bottom: 0;
+  }
+}
+@media screen and (max-width: 576px) {
+  .navbar-toggler {
+    border: none;
+    padding: 0px;
+  }
+  .navbar-toggler :focus {
+    box-shadow: none;
+  }
+  #navbar-width {
+    width: 100%;
+  }
+  .content-wrapper {
+    margin-top: 60px;
+  }
+  .search-sec {
+    display: none;
+  }
+  .search-sec .search-icon {
+    display: none;
+  }
+  .brand {
+    font-size: 25px;
+  }
+  .close-btn {
+    margin-bottom: 10px;
+  }
+  .icons1 {
+    margin-left: 65px;
+  }
+  .dash-grid {
+    margin-top: 6px;
+  }
+  #toggle-section {
+    position: fixed;
+    left: -300px;
+    top: 0;
+    width: 250px;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+  }
+  #toggle-section.open {
+    left: 0 !important;
+  }
+  #toggle-section.closed {
+    left: -300px;
+  }
+  nav.navbar {
+    left: 0;
+  }
+  nav.navbar.full {
+    left: 0px;
+  }
+  .main-section {
+    width: 100%;
+    margin-left: 0;
+  }
+  .main-section.full {
+    margin-left: 0;
+  }
+  .close-btn {
+    display: block;
+    background: transparent;
+    color: #000;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    margin-bottom: 15px;
+  }
+  .content-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .shoes-title {
+    font-family: "satoshi-bold";
+    font-size: 20px;
+    margin-bottom: 0;
+  }
+  .list-section .item .ecommerce-btn .ecommerce-txt {
+    margin-left: -12px;
+  }
+  .list-section .item {
+    font-size: 18px;
+  }
+  .submenu li {
+    font-size: 16px;
+  }
+}/*# sourceMappingURL=admin.css.map */

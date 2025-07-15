@@ -1,0 +1,156 @@
+@import './Variable';
+
+.product-variant-head,.variant-sec{
+    background-color: white;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0px 1px 4px 0px rgba(133, 146, 173, 0.2);
+    padding:10px;
+    border-radius: 12px;
+    margin-bottom:25px;
+}
+.product-variant-head{   
+    & p{
+        font-family:$third-font;
+        font-size:20px;
+        margin-bottom:0px;
+        font-weight:500;
+    }
+}
+.input-label{
+    font-family:$primary-font;
+    font-size:18px;
+    margin-bottom:8px;
+}
+.variant{
+    width:100%;
+    background-color:#fff;
+    border:1px solid #E0E6EB;
+    border-radius:20px;
+    font-family:$third-font;
+    padding:5px 15px;
+    outline:none;
+}
+.variant-title{
+    font-family:$third-font;
+    font-size:20px;
+    margin-bottom:0;
+}
+.variant-btn{
+    background-color:transparent;
+    font-family:$primary-font;
+    font-size:15px;
+    padding:5px 15px;
+    height:35px;
+}
+.variant-select{
+    font-family:$third-font;
+    font-size:18px;
+}
+.price-select,.stock-select{
+    font-family:$primary-font;
+    font-size:17px;
+    width:100%;
+    border:1.5px solid #CCCCCC;
+    padding:5px 10px;
+    border-radius:5px;
+
+    & :focus{
+        border:1.5px solid #2684FF;
+    }
+}
+.img-input{
+    border: 1px solid #CCCCCC;
+    padding:5px 10px;
+    border-radius:5px;
+    margin-top:20px;
+    width:100%;
+}
+.preview-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    display: block;
+}
+
+.preview-wrapper > div {
+    position: relative;
+    display: inline-block;
+}
+
+.img-close,.img-close1 {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    font-size: 16px;
+    color: red;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+
+//Variant-page-scss
+.variant-head,.edit-variant-head{
+    background-color: white;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0px 1px 4px 0px rgba(133, 146, 173, 0.2);
+    padding:10px;
+    border-radius: 12px;
+    margin-bottom:25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    & .title{
+        font-family:$third-font;
+        font-size:20px;
+        margin-bottom:0;
+    }
+    & .back-btn{
+        font-family:$primary-font;
+        font-size:18px;
+        height:35px;
+        padding:2px 10px;
+    }
+}
+.Delete-btn{
+    background:transparent;
+    border:none;
+    color:red;
+    font-size:20px;
+}
+.Edit-btn{
+    background:transparent;
+    border:none;
+    color:blue;
+    font-size:20px;
+}
+
+//Edit Variant Page
+.edit-variant-head{
+    & .title{
+        font-family:$third-font;
+        font-size:20px;
+        margin-bottom:0;
+    }
+}
+.edit-variant-sec{
+    background-color: white;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0px 1px 4px 0px rgba(133, 146, 173, 0.2);
+    padding:10px;
+    border-radius: 12px;
+    margin-bottom:25px;
+}
+.img-input1{
+    border: 1px solid #CCCCCC;
+    padding:5px 10px;
+    border-radius:5px;
+    width:94%;
+}
