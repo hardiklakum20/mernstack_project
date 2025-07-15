@@ -12,7 +12,7 @@ function Role() {
 
     const fetchRole = async () => {
         try {
-            const url = 'http://localhost:8080/api/get-user';
+            const url = `${import.meta.env.VITE_REACT_APP_URL}/get-user`;
 
             const response = await axios.get(url);
             console.log(response.data, 'get res');
@@ -31,7 +31,7 @@ function Role() {
 
     const handleDelete = async (id) => {
         try {
-            const url = `http://localhost:8080/api/delete-user/${id}`
+            const url = `${import.meta.env.VITE_REACT_APP_URL}/delete-user/${id}`
             const response = await axios.delete(url);
             toast.success(response.data);
             if (response.status === 200) {

@@ -17,7 +17,7 @@ export function Login() {
         e.preventDefault();
 
         try {
-            const url = 'http://localhost:8080/api/login';
+            const url = `${import.meta.env.VITE_REACT_APP_URL}/login`;
 
             if (!email || !password) {
                 toast.error("Please fill all required fields.");

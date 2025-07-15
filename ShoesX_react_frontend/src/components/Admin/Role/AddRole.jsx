@@ -58,7 +58,7 @@ function AddRole() {
         }
 
         try {
-            const res = await axios.post("http://localhost:8080/api/add-user", {
+            const res = await axios.post(`${import.meta.env.VITE_REACT_APP_URL}/add-user`, {
                 roleName,
                 name,
                 email,

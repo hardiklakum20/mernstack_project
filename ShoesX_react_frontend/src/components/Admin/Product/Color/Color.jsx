@@ -17,7 +17,7 @@ export function Color() {
 
     const fetchColor = async () => {
         try {
-            const url = 'http://localhost:8080/api/get-color';
+            const url = `${import.meta.env.VITE_REACT_APP_URL}/get-color`;
 
             const response = await axios.get(url);
             console.log(response.data, 'get res');
@@ -36,7 +36,7 @@ export function Color() {
 
     const deleteColor = async (id) => {
         try {
-            const url = `http://localhost:8080/api/delete-color/${id}`
+            const url = `${import.meta.env.VITE_REACT_APP_URL}/delete-color/${id}`
 
             const response = await axios.delete(url);
             console.log(response, 'delete res');

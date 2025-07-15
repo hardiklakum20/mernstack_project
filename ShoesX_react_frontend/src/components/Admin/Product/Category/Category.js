@@ -16,7 +16,7 @@ export function Category() {
 
     const fetchData = async () => {
         try {
-            const url = 'http://localhost:8080/api/category'
+            const url = `${import.meta.env.VITE_REACT_APP_URL}/category`
 
             const response = await axios.get(url);
             console.log(response.data, 'get res');
@@ -38,7 +38,7 @@ export function Category() {
 
     const handleDelete = async (id) => {
         try {
-            const url = `http://localhost:8080/api/delete-category/${id}`
+            const url = `${import.meta.env.VITE_REACT_APP_URL}/delete-category/${id}`
 
             const response = await axios.delete(url);
             console.log(response, 'delete res');

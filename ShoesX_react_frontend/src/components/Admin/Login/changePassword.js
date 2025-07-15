@@ -20,7 +20,7 @@ export function ChangePassword() {
         e.preventDefault();
 
         try {
-            const url = 'http://localhost:8080/api/change-password';
+            const url = `${import.meta.env.VITE_REACT_APP_URL}/change-password`;
             const token = localStorage.getItem('token');
 
             const response = await axios.post(url, { currentPassword, newPassword, confirmPassword }, {

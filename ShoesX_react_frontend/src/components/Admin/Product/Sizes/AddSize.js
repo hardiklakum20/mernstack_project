@@ -14,7 +14,7 @@ export function AddSize() {
         e.preventDefault();
 
         try {
-            const url = 'http://localhost:8080/api/add-size';
+            const url = `${import.meta.env.VITE_REACT_APP_URL}/add-size`;
 
             const response = await axios.post(url, { size, status });
             console.log(response);

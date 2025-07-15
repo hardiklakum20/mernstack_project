@@ -22,7 +22,7 @@ function EditProduct() {
 
     const handleBrand = async () => {
         try {
-            const url = 'http://localhost:8080/api/get-brand';
+            const url = `${import.meta.env.VITE_REACT_APP_URL}/get-brand`;
             const response = await axios.get(url);
 
             if (response?.data?.status === true) {
@@ -42,7 +42,7 @@ function EditProduct() {
         e.preventDefault();
 
         try {
-            const url = `http://localhost:8080/api/edit-product/${state._id}`;
+            const url = `${import.meta.env.VITE_REACT_APP_URL}/edit-product/${state._id}`;
 
             const response = await axios.put(url, { name, sku, price, discount, brand, status });
             if (response.status === 200) {

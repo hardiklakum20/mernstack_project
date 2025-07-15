@@ -15,7 +15,7 @@ export function AddCategory() {
         e.preventDefault();
 
         try {
-            const url = "http://localhost:8080/api/add-category";
+            const url = `${import.meta.env.VITE_REACT_APP_URL}/add-category`;
 
             const response = await axios.post(url, { category, status });
             console.log(response, 'res');

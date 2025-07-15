@@ -22,7 +22,7 @@ export function AddBrand() {
         e.preventDefault();
 
         try {
-            const url = 'http://localhost:8080/api/add-brand';
+            const url = `${import.meta.env.VITE_REACT_APP_URL}/add-brand`;
             const formData = new FormData();
 
             formData.append('brand', brand);
@@ -55,7 +55,7 @@ export function AddBrand() {
 
     const handleCategory = async () => {
         try {
-            const url = 'http://localhost:8080/api/category';
+            const url = `${import.meta.env.VITE_REACT_APP_URL}/category`;
 
             const response = await axios.get(url);
             console.log(response.data, 'get res');

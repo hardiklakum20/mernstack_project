@@ -17,7 +17,7 @@ export function Signup() {
         e.preventDefault();
 
         try {
-            const url = 'http://localhost:8080/api/register';
+            const url = `${import.meta.env.VITE_REACT_APP_URL}/register`;
 
             if (!name || !email || !password) {
                 toast.error("Please fill all required fields.");

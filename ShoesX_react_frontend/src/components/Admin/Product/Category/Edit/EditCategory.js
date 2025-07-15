@@ -15,7 +15,7 @@ export function EditCategory() {
     const handleEdit = async (e) => {
         e.preventDefault();
         try {
-            const url = `http://localhost:8080/api/update-category/${state._id}`;
+            const url = `${import.meta.env.VITE_REACT_APP_URL}/update-category/${state._id}`;
 
             const response = await axios.put(url, { category, status });
             console.log(response, 'put res');

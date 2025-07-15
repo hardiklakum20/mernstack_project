@@ -16,7 +16,7 @@ export function Size() {
 
     const fetchSize = async () => {
         try {
-            const url = 'http://localhost:8080/api/get-size';
+            const url = `${import.meta.env.VITE_REACT_APP_URL}/get-size`;
             const response = await axios.get(url);
             console.log(response);
 
@@ -34,7 +34,7 @@ export function Size() {
 
     const handleDelete = async (id) => {
         try {
-            const url = `http://localhost:8080/api/delete-size/${id}`;
+            const url = `${import.meta.env.VITE_REACT_APP_URL}/delete-size/${id}`;
 
             const response = await axios.delete(url);
             console.log(response, 'delete res');

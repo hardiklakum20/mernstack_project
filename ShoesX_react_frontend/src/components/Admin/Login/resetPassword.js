@@ -21,7 +21,7 @@ export function ResetPassword() {
         e.preventDefault();
 
         try {
-            const url = `http://localhost:8080/api/reset-password/${token}`;
+            const url = `${import.meta.env.VITE_REACT_APP_URL}/reset-password/${token}`;
 
             const response = await axios.post(url, { newPassword, confirmPassword });
             console.log(response);

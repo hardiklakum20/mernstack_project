@@ -14,7 +14,7 @@ export function EditSize() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const url = `http://localhost:8080/api/edit-size/${state._id}`;
+            const url = `${import.meta.env.VITE_REACT_APP_URL}/edit-size/${state._id}`;
 
             const response = await axios.put(url, { size, status });
             console.log(response, 'put res');
