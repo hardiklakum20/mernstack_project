@@ -15,7 +15,7 @@ export function AddCategory() {
         e.preventDefault();
 
         try {
-            const url = `${import.meta.env.VITE_REACT_APP_URL}/add-category`;
+            const url = `${process.env.REACT_APP_URL}/add-category`;
 
             const response = await axios.post(url, { category, status });
             console.log(response, 'res');

@@ -16,7 +16,7 @@ export function ForgotPassword() {
         e.preventDefault();
 
         try {
-            const url = `${import.meta.env.VITE_REACT_APP_URL}/forgot-password`;
+            const url = `${process.env.REACT_APP_URL}/forgot-password`;
             const response = await axios.post(url, { email });
             console.log(response);
 

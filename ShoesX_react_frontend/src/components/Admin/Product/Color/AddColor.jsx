@@ -15,7 +15,7 @@ export function AddColor() {
         e.preventDefault();
 
         try {
-            const url = `${import.meta.env.VITE_REACT_APP_URL}/add-color`;
+            const url = `${process.env.REACT_APP_URL}/add-color`;
 
             const response = await axios.post(url, { color, status });
             console.log(response);

@@ -104,7 +104,7 @@ export function ProductVariant() {
 
     const handleColor = async () => {
         try {
-            const url = `${import.meta.env.VITE_REACT_APP_URL}/get-color`;
+            const url = `${process.env.REACT_APP_URL}/get-color`;
 
             const response = await axios.get(url);
             console.log(response.data.color[0].color, 'get color');
@@ -128,7 +128,7 @@ export function ProductVariant() {
 
     const handleSize = async () => {
         try {
-            const url = `${import.meta.env.VITE_REACT_APP_URL}/get-size`;
+            const url = `${process.env.REACT_APP_URL}/get-size`;
 
             const response = await axios.get(url);
             console.log(response.data.size[0].size, 'get size');
@@ -155,7 +155,7 @@ export function ProductVariant() {
 
     const handleSubmit = async () => {
         try {
-            const url = `${import.meta.env.VITE_REACT_APP_URL}/add-variant`;
+            const url = `${process.env.REACT_APP_URL}/add-variant`;
             const formData = new FormData();
             formData.append("productId", state);
             formData.append('productName', productName);

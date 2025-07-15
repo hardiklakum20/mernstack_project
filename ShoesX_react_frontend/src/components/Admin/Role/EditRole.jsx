@@ -83,7 +83,7 @@ function EditRole() {
     const handleEdit = async () => {
         try {
 
-            const url = `${import.meta.env.VITE_REACT_APP_URL}/edit-user/${state._id}`;
+            const url = `${process.env.REACT_APP_URL}/edit-user/${state._id}`;
 
             const response = await axios.put(url, { roleName, name, email, password, status, permissions });
             console.log(response, 'put res');

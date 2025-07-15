@@ -23,7 +23,7 @@ function AddProduct() {
         e.preventDefault();
 
         try {
-            const url = `${import.meta.env.VITE_REACT_APP_URL}/add-product`;
+            const url = `${process.env.REACT_APP_URL}/add-product`;
 
             const response = await axios.post(url, { name, sku, brand, price, discount, status });
             console.log(response, 'res');
@@ -61,7 +61,7 @@ function AddProduct() {
 
     const handleBrand = async () => {
         try {
-            const url = `${import.meta.env.VITE_REACT_APP_URL}/get-brand`;
+            const url = `${process.env.REACT_APP_URL}/get-brand`;
             const response = await axios.get(url);
 
             console.log(response, 'product brand');

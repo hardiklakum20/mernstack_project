@@ -13,7 +13,7 @@ export function Brand() {
   const handleData = async () => {
 
     try {
-      const url = `${import.meta.env.VITE_REACT_APP_URL}/get-brand`;
+      const url = `${process.env.REACT_APP_URL}/get-brand`;
 
       const response = await axios.get(url);
       console.log(response.data, 'get res');
@@ -34,7 +34,7 @@ export function Brand() {
   // delete brand 
   const handleDelete = async (id) => {
     try {
-      const url = `${import.meta.env.VITE_REACT_APP_URL}/delete-brand/${id}`
+      const url = `${process.env.REACT_APP_URL}/delete-brand/${id}`
 
       const response = await axios.delete(url);
       toast.success(response.data);
@@ -123,7 +123,7 @@ export function Brand() {
                   filterBrand?.map((item, index) => (
                     <tr className="text-center" key={index}>
                       <td>{index + 1}</td>
-                      <td><img src={`${import.meta.env.VITE_REACT_APP_IMAGE}${item.image}`} alt="brand" style={{ width: "35px" }} /></td>
+                      <td><img src={`${process.env.REACT_APP_IMAGE}${item.image}`} alt="brand" style={{ width: "35px" }} /></td>
                       <td>{item.brand}</td>
                       <td>{item.categories && item.categories.length > 0
                         ? item.categories.map(cat => cat.category).join(', ')

@@ -14,7 +14,7 @@ export function EditColor() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const url = `${import.meta.env.VITE_REACT_APP_URL}/edit-color/${state._id}`;
+            const url = `${process.env.REACT_APP_URL}/edit-color/${state._id}`;
 
             const response = await axios.put(url, { color, status });
             console.log(response, 'put res');

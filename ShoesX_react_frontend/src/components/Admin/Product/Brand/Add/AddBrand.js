@@ -22,7 +22,7 @@ export function AddBrand() {
         e.preventDefault();
 
         try {
-            const url = `${import.meta.env.VITE_REACT_APP_URL}/add-brand`;
+            const url = `${process.env.REACT_APP_URL}/add-brand`;
             const formData = new FormData();
 
             formData.append('brand', brand);
@@ -55,7 +55,7 @@ export function AddBrand() {
 
     const handleCategory = async () => {
         try {
-            const url = `${import.meta.env.VITE_REACT_APP_URL}/category`;
+            const url = `${process.env.REACT_APP_URL}/category`;
 
             const response = await axios.get(url);
             console.log(response.data, 'get res');

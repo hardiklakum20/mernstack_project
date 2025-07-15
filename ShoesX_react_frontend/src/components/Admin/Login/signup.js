@@ -17,7 +17,7 @@ export function Signup() {
         e.preventDefault();
 
         try {
-            const url = `${import.meta.env.VITE_REACT_APP_URL}/register`;
+            const url = `${process.env.REACT_APP_URL}/register`;
 
             if (!name || !email || !password) {
                 toast.error("Please fill all required fields.");

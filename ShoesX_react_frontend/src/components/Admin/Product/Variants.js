@@ -13,7 +13,7 @@ export function Variants() {
 
     const handleVarient = async () => {
         try {
-            const url = `${import.meta.env.VITE_REACT_APP_URL}/get-variant/${productId}`;
+            const url = `${process.env.REACT_APP_URL}/get-variant/${productId}`;
 
             const response = await axios.get(url);
             console.log(response.data, 'varient res');
@@ -31,7 +31,7 @@ export function Variants() {
 
     const handleDelete = async (id) => {
         try {
-            const url = `${import.meta.env.VITE_REACT_APP_URL}/delete-variant/${id}`
+            const url = `${process.env.REACT_APP_URL}/delete-variant/${id}`
 
             const response = await axios.delete(url);
             console.log(response, 'delete res')
@@ -121,7 +121,7 @@ export function Variants() {
                                                     <td>{item.productName}</td>
                                                     <td>
                                                         <img
-                                                            src={`${import.meta.env.VITE_REACT_APP_IMAGE}/${v.images?.[0]}`}
+                                                            src={`${process.env.REACT_APP_IMAGE}/${v.images?.[0]}`}
                                                             alt='variant'
                                                             style={{ width: "35px", height: "35px", objectFit: "cover" }}
                                                         />

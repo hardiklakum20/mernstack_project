@@ -412,7 +412,7 @@ export default function EditProductVariant() {
         imagesPreviews: variant.images ? variant.images.map((img, index) => ({
           id: `existing-${index}`,
           filename: img,
-          previewUrl: `${import.meta.env.VITE_REACT_APP_IMAGE}/${img.replace(/\\/g, "/")}`,
+          previewUrl: `${process.env.REACT_APP_IMAGE}/${img.replace(/\\/g, "/")}`,
           isExisting: true
         })) : [],
         removedImages: []
@@ -512,7 +512,7 @@ export default function EditProductVariant() {
 
   const handleColor = async () => {
     try {
-      const url = `${import.meta.env.VITE_REACT_APP_URL}/get-color`;
+      const url = `${process.env.REACT_APP_URL}/get-color`;
       const response = await axios.get(url);
       console.log(response.data.color[0].color, 'get color');
 
@@ -534,7 +534,7 @@ export default function EditProductVariant() {
 
   const handleSize = async () => {
     try {
-      const url = `${import.meta.env.VITE_REACT_APP_URL}/get-size`;
+      const url = `${process.env.REACT_APP_URL}/get-size`;
       const response = await axios.get(url);
       console.log(response.data.size[0].size, 'get size');
 
@@ -645,7 +645,7 @@ export default function EditProductVariant() {
         }
       });
 
-      const url = `${import.meta.env.VITE_REACT_APP_URL}/edit-variant/${state._id}`;
+      const url = `${process.env.REACT_APP_URL}/edit-variant/${state._id}`;
       const response = await axios.put(url, formData, {
         headers: {
           "Content-Type": "multipart/form-data",

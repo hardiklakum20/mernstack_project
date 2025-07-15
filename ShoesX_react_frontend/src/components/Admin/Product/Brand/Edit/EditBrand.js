@@ -20,7 +20,7 @@ export function EditBrand() {
     const handleEdit = async (e) => {
         e.preventDefault();
         try {
-            const url = `${import.meta.env.VITE_REACT_APP_URL}/edit-brand/${state._id}`;
+            const url = `${process.env.REACT_APP_URL}/edit-brand/${state._id}`;
             const formData = new FormData();
             formData.append('brand', brand);
             formData.append('status', status);
@@ -54,7 +54,7 @@ export function EditBrand() {
 
     const fetchCategories = async () => {
         try {
-            const res = await axios.get(`${import.meta.env.VITE_REACT_APP_URL}/category`);
+            const res = await axios.get(`${process.env.REACT_APP_URL}/category`);
             if (res.data.status === true) {
                 const activeCategories = res.data.categories
                     .filter(cat => cat.status === 1)
@@ -85,7 +85,7 @@ export function EditBrand() {
     useEffect(() => {
         fetchCategories();
         if (state?.image) {
-            setPreviewUrl(`${import.meta.env.VITE_REACT_APP_IMAGE}${state.image}`);
+            setPreviewUrl(`${process.env.REACT_APP_IMAGE}${state.image}`);
             setShowImg(true);
         }
     }, [state]);

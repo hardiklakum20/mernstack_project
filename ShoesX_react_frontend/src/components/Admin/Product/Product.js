@@ -15,7 +15,7 @@ function Product() {
 
     const handleProduct = async () => {
         try {
-            const url = `${import.meta.env.VITE_REACT_APP_URL}/get-product`;
+            const url = `${process.env.REACT_APP_URL}/get-product`;
             const response = await axios.get(url);
             console.log(response.data, 'product list');
             setProductList(response.data.product);
@@ -30,7 +30,7 @@ function Product() {
 
     const handleDelete = async (id) => {
         try {
-            const url = `${import.meta.env.VITE_REACT_APP_URL}/delete-product/${id}`
+            const url = `${process.env.REACT_APP_URL}/delete-product/${id}`
             const response = await axios.delete(url);
             toast.success(response.data);
             if (response.status === 200) {
@@ -54,7 +54,7 @@ function Product() {
 
     const varientExist = async (productId, navigate) => {
         try {
-            const url = `${import.meta.env.VITE_REACT_APP_URL}/get-variant/${productId}`;
+            const url = `${process.env.REACT_APP_URL}/get-variant/${productId}`;
             const response = await axios.get(url);
 
             if (response?.data?.variants.length > 0) {
@@ -70,7 +70,7 @@ function Product() {
 
     const varientView = async (productId, navigate) => {
         try {
-            const url = `${import.meta.env.VITE_REACT_APP_URL}/get-variant/${productId}`;
+            const url = `${process.env.REACT_APP_URL}/get-variant/${productId}`;
             const response = await axios.get(url);
 
             // If no variant found (assume `data.variant` is null or empty)
