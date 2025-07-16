@@ -9,7 +9,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "ShoesX_backend/index.js"
+      "dest": "/ShoesX_backend/index.js"
     }
   ]
 }
