@@ -41,7 +41,8 @@ export default function EditProductVariant() {
         imagesPreviews: variant.images ? variant.images.map((img, index) => ({
           id: `existing-${index}`,
           filename: img,
-          previewUrl: `${process.env.REACT_APP_CLOUD_BASE_URL}/${img.replace(/\\/g, "/")}`,
+          // Check if img is already a full URL (starts with http/https)
+          previewUrl: img.startsWith('http') ? img : `${process.env.REACT_APP_CLOUD_BASE_URL}/${img.replace(/\\/g, "/")}`,
           isExisting: true
         })) : [],
         removedImages: []
@@ -389,7 +390,7 @@ export default function EditProductVariant() {
                   section.imagesPreviews.map((img, i) => (
                     <div key={img.id || i} className="position-relative me-2 mb-2">
                       <img
-                        src={img.images}
+                        src={img.previewUrl}
                         alt="preview"
                         className="preview-img"
                         style={{ width: '100px', height: '100px', objectFit: 'cover', border: '1px solid #ddd' }}
@@ -426,7 +427,7 @@ export default function EditProductVariant() {
           </button>
           <button
             className="btn btn-closes"
-            onClick={() => navigate("/product/variant")}
+            onClick={() => navigate(-1)}
             type="button"
           >
             Cancel
