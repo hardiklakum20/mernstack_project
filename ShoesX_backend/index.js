@@ -14,32 +14,36 @@ const { defaultAdmin } = require('./controller/AuthController');
 const UserRouter = require('./router/UserRoute');
 const serverless = require('serverless-http');
 
-// connectDB();
-let dbInitialized = false;
-app.use(async (req, res, next) => {
-  if (!dbInitialized) {
-    try {
-      await connectDB();
-      await defaultAdmin();
-      dbInitialized = true;
-    } catch (error) {
-      console.error('Database init failed:', error);
-      return res.status(500).json({ error: 'Database connection failed' });
-    }
-  }
-  next();
-});
-
+// Initialize app first
 const app = express();
+
+// Set up middleware
 app.use(express.json());
 app.use(cors({
     origin: 'https://shoesx-mernstack.vercel.app',
     credentials: true
 }));
-
 app.options('*', cors());
-// defaultAdmin();
 
+// Database initialization middleware
+let dbInitialized = false;
+app.use(async (req, res, next) => {
+    if (!dbInitialized) {
+        try {
+            await connectDB();
+            await defaultAdmin();
+            dbInitialized = true;
+            next();
+        } catch (error) {
+            console.error('Database init failed:', error);
+            return res.status(500).json({ error: 'Database connection failed' });
+        }
+    } else {
+        next();
+    }
+});
+
+// Routes
 app.get('/ping', (req, res) => {
     res.send('PONG');
 });
