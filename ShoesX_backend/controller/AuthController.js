@@ -119,9 +119,10 @@ const login = async (req, res) => {
             existingUser: {
                 _id: existingUser._id,
                 email: existingUser.email || existingUser.username,
-                role: userRole
+                // role: userRole
             },
-            role: userRole
+            role: userRole,
+            name: existingUser.name
         };
 
         // Include additional data for UserModal users

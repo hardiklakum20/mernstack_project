@@ -159,7 +159,7 @@ function ViewProduct() {
             <div className='view-product-body body-bg'>
                 <div className="row">
                     <div className="col-lg-6 col-md-12">
-                        <img alt="product" className='img-fluid' src={`${process.env.REACT_APP_IMAGE}/${state?.brand?.image}`} />
+                        <img alt="product" className='img-fluid' src={`${process.env.REACT_APP_CLOUD_BASE_URL}/${state?.brand?.image}`} />
                         <div className='img-child'>
                             <Swiper
                                 slidesPerView={5}
@@ -200,7 +200,7 @@ function ViewProduct() {
                                 ))} */}
                                 <SwiperSlide className='swiper-img'>
                                     <img
-                                        src={`${process.env.REACT_APP_IMAGE}${state.brand.image}`}
+                                        src={`${process.env.REACT_APP_CLOUD_BASE_URL}/${state.brand.image}`}
                                         alt='product'
                                         className='img-fluid'
                                     />

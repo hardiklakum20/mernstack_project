@@ -3,7 +3,7 @@ const Joi = require('joi');
 const colorMiddleware = (req, res, next) => {
     const schema = Joi.object({
         color: Joi.string().required(),
-        status: Joi.string().required(),
+        status: Joi.required(),
     });
 
     const { error } = schema.validate(req.body)

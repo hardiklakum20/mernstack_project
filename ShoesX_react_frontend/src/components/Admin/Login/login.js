@@ -25,12 +25,12 @@ export function Login() {
             }
 
             const response = await axios.post(url, { email, password });
-            console.log(response, 'res');
+            console.log(response, 'login response');
 
             if (response.status === 200) {
                 toast.success(response.data.message);
                 localStorage.setItem('token', response.data.token);
-                localStorage.setItem('name', response.data.existingUser.username);
+                localStorage.setItem('name', response.data.name);
                 setTimeout(() => {
                     navigate('/');
                 }, 1500)

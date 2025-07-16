@@ -4,13 +4,12 @@ import dash2 from '../../Assets/Images/dash2.svg';
 import dash3 from '../../Assets/Images/dash3.svg';
 import dash4 from '../../Assets/Images/dash4.svg';
 import dash5 from '../../Assets/Images/dash5.svg';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import list from '../../Assets/Images/list.svg'
 
 export function Dashboard() {
-    // Static mock data for dashboard
-    const [name] = useState('Admin User');
+    // Static mock data for dashboard    
 
     const [state] = useState({
         series: [{
@@ -128,6 +127,16 @@ export function Dashboard() {
             },
         ],
     };
+    const [name, setName] = useState('');
+
+    useEffect(() => {
+        const storedName = localStorage.getItem('name');
+        if (storedName) {
+            setName(storedName);
+        } else {
+            setName('Admin');
+        }
+    }, []);
 
     return (
         <div>

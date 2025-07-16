@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import '../Assets/scss/admin.css';
@@ -23,7 +23,16 @@ export function Admin() {
         // Add more as needed
         0: ['*'] // Simulate super admin
     };
-    const name = 'Admin User';
+    const [name, setName] = useState('');
+
+    useEffect(() => {
+        const storedName = localStorage.getItem('name');
+        if (storedName) {
+            setName(storedName);
+        } else {
+            setName('Admin');
+        }
+    }, []);
 
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
