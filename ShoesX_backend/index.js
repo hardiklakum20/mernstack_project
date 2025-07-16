@@ -45,7 +45,7 @@ const corsOptions = {
 // ✅ Apply CORS middleware
 app.use(cors(corsOptions));
 
-// ✅ Handle preflight requests manually (to avoid crashes)
+// ✅ Handle preflight requests manually
 app.use((req, res, next) => {
     if (req.method === 'OPTIONS') {
         res.sendStatus(204); // No Content
