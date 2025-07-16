@@ -13,6 +13,7 @@ const VarientRouter = require('./router/VarientRouter');
 const { defaultAdmin } = require('./controller/AuthController');
 const UserRouter = require('./router/UserRoute');
 const serverless = require('serverless-http');
+const path = require('path');
 
 // Initialize app first
 const app = express();
@@ -53,7 +54,7 @@ app.use('/api', CategoryRouter);
 app.use('/api', SizeRouter);
 app.use('/api', ColorRouter);
 app.use('/api', BrandRouter);
-app.use('/public/images', express.static('public/images'));
+app.use('/public/images', express.static(path.join(__dirname, 'public', 'images')));
 app.use('/api', ProductRouter);
 app.use('/api', VarientRouter);
 app.use('/api', UserRouter);
