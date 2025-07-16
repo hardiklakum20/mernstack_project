@@ -3,15 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 dotenv.config();
 const connectDB = require('./db/Database');
-const AuthRouter = require('./router/AuthRoute');
-const CategoryRouter = require('./router/CategoryRouter');
-const SizeRouter = require('./router/SizeRouter');
-const ColorRouter = require('./router/ColorRouter');
-const BrandRouter = require('./router/BrandRouter');
-const ProductRouter = require('./router/ProductRoute');
-const VarientRouter = require('./router/VarientRouter');
 const { defaultAdmin } = require('./controller/AuthController');
-const UserRouter = require('./router/UserRoute');
 const serverless = require('serverless-http');
 const path = require('path');
 
@@ -53,19 +45,29 @@ app.get('/ping', (req, res) => {
 // Static files middleware
 app.use('/public/images', express.static(path.join(__dirname, 'public', 'images')));
 
-// API Routes - be specific about route patterns
-try {
-    app.use('/api/auth', AuthRouter);
-    app.use('/api/categories', CategoryRouter);
-    app.use('/api/sizes', SizeRouter);
-    app.use('/api/colors', ColorRouter);
-    app.use('/api/brands', BrandRouter);
-    app.use('/api/products', ProductRouter);
-    app.use('/api/variants', VarientRouter);
-    app.use('/api/users', UserRouter);
-} catch (error) {
-    console.error('Route setup error:', error);
-}
+// Load routers one by one with error handling
+const routers = [
+    { path: '/api/auth', file: './router/AuthRoute', name: 'AuthRouter' },
+    { path: '/api/categories', file: './router/CategoryRouter', name: 'CategoryRouter' },
+    { path: '/api/sizes', file: './router/SizeRouter', name: 'SizeRouter' },
+    { path: '/api/colors', file: './router/ColorRouter', name: 'ColorRouter' },
+    { path: '/api/brands', file: './router/BrandRouter', name: 'BrandRouter' },
+    { path: '/api/products', file: './router/ProductRoute', name: 'ProductRouter' },
+    { path: '/api/variants', file: './router/VarientRouter', name: 'VarientRouter' },
+    { path: '/api/users', file: './router/UserRoute', name: 'UserRouter' }
+];
+
+routers.forEach(({ path, file, name }) => {
+    try {
+        console.log(`Loading ${name} from ${file}...`);
+        const router = require(file);
+        app.use(path, router);
+        console.log(`✓ ${name} loaded successfully`);
+    } catch (error) {
+        console.error(`✗ Error loading ${name}:`, error.message);
+        console.error(`Stack: ${error.stack}`);
+    }
+});
 
 // Catch-all route for unmatched requests
 app.get('*', (req, res) => {

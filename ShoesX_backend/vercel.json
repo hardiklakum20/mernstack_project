@@ -16,11 +16,7 @@
       "dest": "index.js"
     },
     {
-      "src": "/public/(.*)",
-      "dest": "index.js"
-    },
-    {
-      "src": "/(.*)",
+      "src": "/public/images/(.*)",
       "dest": "index.js"
     }
   ]
