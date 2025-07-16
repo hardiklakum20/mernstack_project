@@ -34,6 +34,7 @@ app.use(async (req, res, next) => {
             await connectDB();
             await defaultAdmin();
             dbInitialized = true;
+            console.log('Database initialized successfully');
             next();
         } catch (error) {
             console.error('Database init failed:', error);
@@ -44,20 +45,46 @@ app.use(async (req, res, next) => {
     }
 });
 
-// Routes
+// Health check route
 app.get('/ping', (req, res) => {
-    res.send('PONG');
+    res.json({ status: 'PONG', timestamp: new Date().toISOString() });
 });
 
-app.use('/api', AuthRouter);
-app.use('/api', CategoryRouter);
-app.use('/api', SizeRouter);
-app.use('/api', ColorRouter);
-app.use('/api', BrandRouter);
+// Static files middleware
 app.use('/public/images', express.static(path.join(__dirname, 'public', 'images')));
-app.use('/api', ProductRouter);
-app.use('/api', VarientRouter);
-app.use('/api', UserRouter);
+
+// API Routes - be specific about route patterns
+try {
+    app.use('/api/auth', AuthRouter);
+    app.use('/api/categories', CategoryRouter);
+    app.use('/api/sizes', SizeRouter);
+    app.use('/api/colors', ColorRouter);
+    app.use('/api/brands', BrandRouter);
+    app.use('/api/products', ProductRouter);
+    app.use('/api/variants', VarientRouter);
+    app.use('/api/users', UserRouter);
+} catch (error) {
+    console.error('Route setup error:', error);
+}
+
+// Catch-all route for unmatched requests
+app.get('*', (req, res) => {
+    res.status(404).json({
+        error: 'Route not found',
+        path: req.path,
+        method: req.method
+    });
+});
+
+// Error handling middleware
+app.use((error, req, res, next) => {
+    console.error('Global error handler:', error);
+    res.status(500).json({
+        error: 'Internal server error',
+        message: error.message,
+        stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+    });
+});
 
 module.exports = app;
 module.exports.handler = serverless(app);
