@@ -17,8 +17,34 @@ const UserRouter = require('./router/UserRoute');
 connectDB();
 
 const app = express();
+const corsOptions = {
+    origin: function (origin, callback) {
+        const allowedOrigins = [
+            'https://shoesx-mernstack.vercel.app',
+            'http://localhost:3000',
+        ];
+
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: [
+        'Content-Type',
+        'Authorization',
+        'X-Requested-With',
+        'Accept',
+        'Origin'
+    ]
+};
+
+// ✅ Apply only once
+app.use(cors(corsOptions));
+// app.options('*', cors(corsOptions));
 app.use(express.json());
-app.use(cors())
 defaultAdmin();
 
 app.get('/ping', (req, res) => {
