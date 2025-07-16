@@ -11,7 +11,6 @@ const BrandRouter = require('./router/BrandRouter');
 const ProductRouter = require('./router/ProductRoute');
 const VarientRouter = require('./router/VarientRouter');
 const { defaultAdmin } = require('./controller/AuthController');
-// const AdminRouter = require('./router/AdminRoute');
 const UserRouter = require('./router/UserRoute');
 const serverless = require('serverless-http');
 
@@ -41,9 +40,5 @@ app.use('/api', ProductRouter);
 app.use('/api', VarientRouter);
 app.use('/api', UserRouter);
 
-
-// const PORT = process.env.PORT || 5000;
-
-// app.listen(PORT, () => console.log(`Server started on port http://localhost:${PORT}`));
 module.exports = app;
 module.exports.handler = serverless(app);
