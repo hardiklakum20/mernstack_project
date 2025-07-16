@@ -21,6 +21,10 @@ app.use(express.json());
 app.use(cors())
 defaultAdmin();
 
+app.get('/ping', (req, res) => {
+    res.send('PONG');
+});
+
 app.use('/api', AuthRouter);
 app.use('/api', CategoryRouter);
 app.use('/api', SizeRouter);
