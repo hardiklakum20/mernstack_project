@@ -17,13 +17,14 @@ const UserRouter = require('./router/UserRoute');
 connectDB();
 
 const app = express();
+const allowedOrigins = [
+    'https://shoesx-mernstack.vercel.app',
+    'http://localhost:3000',
+];
+
 const corsOptions = {
     origin: function (origin, callback) {
-        const allowedOrigins = [
-            'https://shoesx-mernstack.vercel.app',
-            'http://localhost:3000',
-        ];
-
+        // Allow requests with no origin (like curl, mobile apps)
         if (!origin || allowedOrigins.includes(origin)) {
             callback(null, true);
         } else {
@@ -41,9 +42,17 @@ const corsOptions = {
     ]
 };
 
-// ✅ Apply only once
+// ✅ Apply CORS middleware
 app.use(cors(corsOptions));
-// app.options('*', cors(corsOptions));
+
+// ✅ Handle preflight requests manually (to avoid crashes)
+app.use((req, res, next) => {
+    if (req.method === 'OPTIONS') {
+        res.sendStatus(204); // No Content
+    } else {
+        next();
+    }
+});
 app.use(express.json());
 defaultAdmin();
 
