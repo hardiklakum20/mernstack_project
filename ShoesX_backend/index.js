@@ -13,6 +13,7 @@ const VarientRouter = require('./router/VarientRouter');
 const { defaultAdmin } = require('./controller/AuthController');
 // const AdminRouter = require('./router/AdminRoute');
 const UserRouter = require('./router/UserRoute');
+const serverless = require('serverless-http');
 
 connectDB();
 
