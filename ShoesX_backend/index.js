@@ -14,7 +14,21 @@ const { defaultAdmin } = require('./controller/AuthController');
 const UserRouter = require('./router/UserRoute');
 const serverless = require('serverless-http');
 
-connectDB();
+// connectDB();
+let dbInitialized = false;
+app.use(async (req, res, next) => {
+  if (!dbInitialized) {
+    try {
+      await connectDB();
+      await defaultAdmin();
+      dbInitialized = true;
+    } catch (error) {
+      console.error('Database init failed:', error);
+      return res.status(500).json({ error: 'Database connection failed' });
+    }
+  }
+  next();
+});
 
 const app = express();
 app.use(express.json());
@@ -24,7 +38,7 @@ app.use(cors({
 }));
 
 app.options('*', cors());
-defaultAdmin();
+// defaultAdmin();
 
 app.get('/ping', (req, res) => {
     res.send('PONG');
