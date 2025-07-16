@@ -387,7 +387,7 @@ export default function EditProductVariant() {
   const [variantSections, setVariantSections] = useState([]);
   const [productName, setProductName] = useState(state.productName);
   const [status, setStatus] = useState(state.status);
-  const { productId } = location.state || {};
+  // const { productId } = location.state || {};
 
   console.log(state, 'state edit variant');
 
