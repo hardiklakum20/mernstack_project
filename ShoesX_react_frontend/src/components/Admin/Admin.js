@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import ProfileImg from '../Assets/Images/profile-img.webp';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { jwtDecode } from 'jwt-decode';
 
 export function Admin() {
     // Static mock data for permissions and name
@@ -113,6 +114,28 @@ export function Admin() {
             return { left: '0' };
         }
     };
+
+    const [profile, setProfile] = useState({
+        name: '',
+        role: ''
+    });
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            try {
+                const decoded = jwtDecode(token);
+                setProfile({
+                    name: decoded.name || decoded.email?.split('@')[0] || '',
+                    role: decoded.roleName || decoded.role || ''
+                });
+            } catch (e) {
+                setProfile({ name: '', role: '' });
+            }
+        } else {
+            setProfile({ name: '', role: '' });
+        }
+    }, []);
 
     return (
         <>
@@ -432,7 +455,8 @@ export function Admin() {
                                                     <a className="dropdown-item d-flex gap-2 align-items-center" href="#">
                                                         <img src={ProfileImg} className='img-fluid' />
                                                         <div>
-                                                            <p className='m-0'>{name}</p>
+                                                            <h6 className='m-0'>{profile.name || 'Profile'}</h6>
+                                                            <p className='m-0'>{profile.role || 'Role'}</p>
                                                         </div>
                                                     </a>
                                                 </Link>
@@ -531,8 +555,8 @@ export function Admin() {
                                                         <a class="dropdown-item d-flex gap-2 align-items-center" href="#">
                                                             <img src={ProfileImg} className='img-fluid' />
                                                             <div>
-                                                                <h6 className='m-0'>John Deo</h6>
-                                                                <p className='m-0'>Admin</p>
+                                                                <h6 className='m-0'>{profile.name || 'Profile'}</h6>
+                                                                <p className='m-0'>{profile.role || 'Role'}</p>
                                                             </div>
                                                         </a>
                                                     </Link>
