@@ -11,24 +11,15 @@ const BrandRouter = require('./router/BrandRouter');
 const ProductRouter = require('./router/ProductRoute');
 const VarientRouter = require('./router/VarientRouter');
 const { defaultAdmin } = require('./controller/AuthController');
+// const AdminRouter = require('./router/AdminRoute');
 const UserRouter = require('./router/UserRoute');
-const serverless = require('serverless-http');
 
 connectDB();
 
 const app = express();
 app.use(express.json());
-app.use(cors({
-    origin: 'https://shoesx-mernstack.vercel.app',
-    credentials: true
-}));
-
-app.options('*', cors());
+app.use(cors())
 defaultAdmin();
-
-app.get('/ping', (req, res) => {
-    res.send('PONG');
-});
 
 app.use('/api', AuthRouter);
 app.use('/api', CategoryRouter);
@@ -40,5 +31,7 @@ app.use('/api', ProductRouter);
 app.use('/api', VarientRouter);
 app.use('/api', UserRouter);
 
-module.exports = app;
-module.exports.handler = serverless(app);
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => console.log(`Server started on port http://localhost:${PORT}`));
