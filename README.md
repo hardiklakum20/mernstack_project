@@ -1,6 +1,8 @@
 👟 ShoesX MERN Project
 
+
 🚀 Overview
+
 
 🔐 Admin Panel – MERN Stack E-commerce App
 A robust and secure full-stack e-commerce admin dashboard built with MongoDB, Express.js, React.js, and Node.js. It allows admins to manage:
@@ -16,6 +18,7 @@ A robust and secure full-stack e-commerce admin dashboard built with MongoDB, Ex
 📦 Product Variants
 
 Includes secure JWT-based authentication and full CRUD operations for all resources.
+
 
 📁 Project Structure
 ```bash
@@ -41,9 +44,9 @@ Includes secure JWT-based authentication and full CRUD operations for all resour
 └── package.json
 ```
 
-🛠️ Technologies Used
 
-🔹 Frontend (React):
+🛠️ Technologies Used
+🔹 Frontend (React)
 React Router DOM
 
 Axios
@@ -61,6 +64,7 @@ ApexCharts
 Swiper
 
 React Toastify
+
 
 🔹 Backend (Node.js + Express):
 JWT (Authentication)
@@ -83,8 +87,10 @@ Joi
 
 dotenv
 
+
 🔹 Database:
 MongoDB
+
 
 🔐 Authentication Features
 ✅ Admin Sign Up
@@ -93,6 +99,7 @@ MongoDB
 ✅ Change Password
 ✅ Protected Routes using Middleware
 ✅ Token Storage in LocalStorage
+
 
 🗃️ Admin Panel Functionalities
 
@@ -105,6 +112,7 @@ MongoDB
 
 👁️ View Product Details
 
+
 🏷️ Category Management
 ➕ Create Category
 
@@ -114,12 +122,14 @@ MongoDB
 
 📋 List All Categories
 
+
 🏭 Brand Management
 ➕ Add Brand
 
 📝 Edit Brand
 
 ❌ Delete Brand
+
 
 🎨 Color Management
 ➕ Add Color (name + HEX code)
@@ -128,12 +138,14 @@ MongoDB
 
 ❌ Delete Color
 
+
 📏 Size Management
 ➕ Add Size
 
 📝 Edit Size
 
 ❌ Delete Size
+
 
 🚀 Bonus Features
 🔍 Search in all tables
@@ -149,6 +161,7 @@ MongoDB
 🔔 Toast alerts for user feedback
 
 🧭 Sidebar, Navbar, and Clean UI
+
 
 ⚙️ Installation
 
