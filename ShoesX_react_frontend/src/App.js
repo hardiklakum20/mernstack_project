@@ -17,7 +17,7 @@ import AddRole from './components/Admin/Role/AddRole';
 import EditRole from './components/Admin/Role/EditRole';
 import Order from './components/Admin/Order/Order';
 import Profile from './components/Admin/Profile/Profile';
-import PaymentPage from './components/Admin/Payment/Payment';
+// import PaymentPage from './components/Admin/Payment/Payment';
 import { Brand } from './components/Admin/Product/Brand/Brand';
 import { AddBrand } from './components/Admin/Product/Brand/Add/AddBrand';
 import UserPage from './components/Admin/User/UserPage';
@@ -120,17 +120,17 @@ function App() {
         <Route path="add-color" element={<AddColor />} />
         <Route path="edit-color" element={<EditColor />} />
 
-        <Route path="order" element={<Order />} />
-        <Route path="order/view-order" element={<ViewOrder />} />
+        {/* <Route path="order" element={<Order />} /> */}
+        {/* <Route path="order/view-order" element={<ViewOrder />} /> */}
 
 
         <Route path="profile" element={<Profile />} />
         <Route path="change-password" element={<ChangePassword />} />
 
-        <Route path="payment" element={<PaymentPage />} />
+        {/* <Route path="payment" element={<PaymentPage />} /> */}
 
-        <Route path="user" element={<UserPage />} />
-        <Route path='user/user-details' element={<UserDetails />}></Route>
+        {/* <Route path="user" element={<UserPage />} /> */}
+        {/* <Route path='user/user-details' element={<UserDetails />}></Route> */}
       </Route>
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>

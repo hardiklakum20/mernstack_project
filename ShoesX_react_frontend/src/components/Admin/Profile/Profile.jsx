@@ -1,17 +1,50 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ProfileImg from '../../Assets/Images/profile.jpg';
 import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
 
 function Profile() {
     const navigate = useNavigate();
+    const [profile, setProfile] = useState({
+        name: '',
+        username: '',
+        email: '',
+        role: ''
+    });
 
-    // Static admin data
-    const admin = {
-        name: "John Doe",
-        username: "johndoe",
-        email: "john.doe@shoesx.com",
-        role: "Administrator"
-    };
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            try {
+                const decoded = jwtDecode(token);
+                // Prefer name, email, role from token, fallback to static if missing
+                const name = decoded.name || '';
+                const email = decoded.email || '';
+                const role = decoded.role || '';
+                // Username: if available, else use email prefix
+                let username = decoded.username || '';
+                if (!username && email) {
+                    username = email.split('@')[0];
+                }
+                setProfile({ name, username, email, role });
+            } catch (e) {
+                // Invalid token, fallback to static
+                setProfile({
+                    name: 'John Doe',
+                    username: 'johndoe',
+                    email: 'john.doe@shoesx.com',
+                    role: 'Administrator'
+                });
+            }
+        } else {
+            setProfile({
+                name: 'John Doe',
+                username: 'johndoe',
+                email: 'john.doe@shoesx.com',
+                role: 'Administrator'
+            });
+        }
+    }, []);
 
     return (
         <>
@@ -29,9 +62,9 @@ function Profile() {
                 <div className='profile-content'>
                     <img src={ProfileImg} alt="profile" className='img-fluid' />
                     <div>
-                        <h4>{admin.name}</h4>
-                        <p>{admin.username}</p>
-                        <p>{admin.email}</p>
+                        <h4>{profile.name}</h4>
+                        <p>{profile.username}</p>
+                        <p>{profile.email}</p>
                     </div>
                 </div>
             </div>
@@ -45,7 +78,7 @@ function Profile() {
                                 type="text"
                                 className="form-control"
                                 id="username"
-                                value={admin.username}
+                                value={profile.username}
                                 readOnly
                             />
                         </div>
@@ -57,7 +90,7 @@ function Profile() {
                                 type="text"
                                 className="form-control"
                                 id="role"
-                                value={admin.role}
+                                value={profile.role}
                                 readOnly
                             />
                         </div>
@@ -69,15 +102,15 @@ function Profile() {
                                 type="email"
                                 className="form-control"
                                 id="email"
-                                value={admin.email}
+                                value={profile.email}
                                 readOnly
                             />
                         </div>
                     </div>
                 </div>
-                <div className="col-md-6">
+                {/* <div className="col-md-6">
                     <button className='btn default-btn'>Update Profile</button>
-                </div>
+                </div> */}
             </div>
         </>
     );

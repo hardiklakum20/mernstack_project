@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import '../Assets/scss/admin.css';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ProfileImg from '../Assets/Images/profile-img.webp';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,10 +11,10 @@ export function Admin() {
     // Static mock data for permissions and name
     const permissions = {
         dashboard: ['view'],
-        orders: ['view'],
-        users: ['view'],
+        // orders: ['view'],
+        // users: ['view'],
         role: ['view'],
-        payment: ['view'],
+        // payment: ['view'],
         products: ['view'],
         category: ['view'],
         brand: ['view'],
@@ -35,7 +35,8 @@ export function Admin() {
     }, []);
 
     const navigate = useNavigate();
-    const [isOpen, setIsOpen] = useState(false);
+    const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 992);
+    const [isOpen, setIsOpen] = useState(window.innerWidth >= 992 ? false : false); // false: open on desktop, closed on mobile by default
     const location = useLocation();
     const sidebarRef = useRef(null);
     const [showModal, setShowModal] = useState(false);
@@ -60,7 +61,59 @@ export function Admin() {
             navigate("/login");
         }, 1600)
     };
-    // Remove useEffect for click outside and backend
+    // Responsive sidebar: always open on desktop, togglable on mobile
+    useEffect(() => {
+        const handleResize = () => {
+            const desktop = window.innerWidth >= 992;
+            setIsDesktop(desktop);
+            if (desktop) {
+                setIsOpen(false); // always open on desktop
+            }
+        };
+        window.addEventListener('resize', handleResize);
+        // Set initial state
+        const desktop = window.innerWidth >= 992;
+        setIsDesktop(desktop);
+        if (desktop) {
+            setIsOpen(false);
+        }
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    // Close sidebar on route change (mobile only)
+    useEffect(() => {
+        if (!isDesktop) {
+            setIsOpen(false);
+        }
+    }, [location.pathname, isDesktop]);
+
+    // Function to close sidebar (can be passed to children for cancel/edit actions)
+    const closeSidebar = () => {
+        if (!isDesktop) {
+            setIsOpen(false);
+        }
+    };
+
+    // Calculate sidebar width for desktop
+    const getMainSectionMargin = () => {
+        if (isDesktop) {
+            // On desktop, sidebar is always open
+            return { marginLeft: '350px' };
+        } else {
+            // On mobile, sidebar overlays, so margin-left is 0
+            return { marginLeft: '0' };
+        }
+    };
+
+    // Calculate navbar left position for desktop
+    const getNavbarStyle = () => {
+        if (isDesktop) {
+            return { left: '360px' };
+        } else {
+            return { left: '0' };
+        }
+    };
+
     return (
         <>
             <div>
@@ -76,19 +129,19 @@ export function Admin() {
                                 </g>
                             </svg>
                         </NavLink>
-                        <NavLink to='/order' className={({ isActive }) => isActive ? 'dash-icon-wrapper active' : 'dash-icon-wrapper'}>
+                        {/* <NavLink to='/order' className={({ isActive }) => isActive ? 'dash-icon-wrapper active' : 'dash-icon-wrapper'}>
                             <svg aria-hidden="true" role="img" className="iconify iconify--solar" width="25" height="25" viewBox="0 0 24 24" fill="currentColor">
                                 <path fill="currentColor" fillRule="evenodd" clipRule="evenodd" d="M9.94 3.25h4.12c1.841 0 3.3 0 4.44.153c1.175.158 2.125.49 2.875 1.238c1.114 1.112 1.32 2.687 1.375 4.834c.018.736-.564 1.188-1.051 1.316a1.25 1.25 0 0 0 0 2.419c.487.127 1.07.579 1.05 1.315c-.054 2.147-.26 3.722-1.374 4.834c-.75.748-1.7 1.08-2.874 1.238c-1.141.153-2.6.153-4.44.153H9.94c-1.841 0-3.3 0-4.44-.153c-1.175-.158-2.125-.49-2.875-1.238c-1.114-1.112-1.32-2.687-1.375-4.834c-.018-.736.564-1.188 1.051-1.316a1.25 1.25 0 0 0 0-2.419c-.487-.127-1.07-.578-1.05-1.315c.054-2.147.26-3.722 1.374-4.834c.75-.748 1.7-1.08 2.874-1.238C6.641 3.25 8.1 3.25 9.94 3.25Zm1.074 5.55c.172-.225.484-.55.986-.55s.814.325.986.55c.165.214.33.511.5.816l.023.041l.098.177l.057.1l.099.023l.19.043l.048.01c.327.075.653.148.903.247c.276.109.65.32.795.785c.142.455-.037.841-.193 1.09c-.145.23-.365.486-.59.749l-.03.035l-.13.153l-.082.097l.012.135l.02.203l.004.046c.034.352.067.692.055.964c-.012.286-.08.718-.468 1.011c-.4.304-.84.238-1.12.157c-.258-.073-.562-.214-.87-.355l-.043-.02l-.18-.083l-.084-.039l-.085.04l-.179.082l-.044.02c-.306.141-.61.282-.869.355c-.28.08-.72.147-1.12-.157c-.387-.293-.456-.725-.468-1.01c-.012-.273.02-.613.055-.965l.004-.046l.02-.203l.013-.135l-.083-.097l-.13-.153l-.03-.035c-.225-.263-.445-.52-.59-.75c-.156-.248-.335-.634-.193-1.09c.144-.463.519-.675.795-.784c.25-.099.576-.172.903-.246l.047-.01l.191-.044l.1-.023l.056-.1l.098-.177l.023-.041c.17-.305.335-.602.5-.816Z" />
                             </svg>
-                        </NavLink>
-                        <NavLink to='/user' className={({ isActive }) => isActive ? 'dash-icon-wrapper active' : 'dash-icon-wrapper'}>
+                        </NavLink> */}
+                        {/* <NavLink to='/user' className={({ isActive }) => isActive ? 'dash-icon-wrapper active' : 'dash-icon-wrapper'}>
                             <svg aria-hidden="true" role="img" className="iconify iconify--solar" width="25" height="25" viewBox="0 0 24 24" fill="currentColor">
                                 <g fill="currentColor" fillRule="evenodd" clipRule="evenodd">
                                     <path d="M9.25 9a2.75 2.75 0 1 1 5.5 0a2.75 2.75 0 0 1-5.5 0M12 7.75a1.25 1.25 0 1 0 0 2.5a1.25 1.25 0 0 0 0-2.5m0 4.5c-1.196 0-2.315.24-3.164.665c-.803.402-1.586 1.096-1.586 2.085v.063c-.002.51-.004 1.37.81 1.959c.378.273.877.448 1.495.559c.623.112 1.422.169 2.445.169s1.822-.057 2.445-.169c.618-.111 1.117-.286 1.495-.56c.814-.589.812-1.448.81-1.959V15c0-.99-.783-1.683-1.586-2.085c-.849-.424-1.968-.665-3.164-.665M8.75 15c0-.115.113-.421.757-.743c.6-.3 1.48-.507 2.493-.507s1.894.207 2.493.507c.644.322.757.628.757.743c0 .604-.039.697-.19.807c-.122.088-.373.206-.88.298c-.502.09-1.203.145-2.18.145s-1.678-.055-2.18-.145c-.507-.092-.758-.21-.88-.298c-.152-.11-.19-.203-.19-.807" />
                                     <path d="M8.723 2.051c1.444-.494 2.34-.801 3.277-.801s1.833.307 3.277.801l.727.25c1.481.506 2.625.898 3.443 1.23c.412.167.767.33 1.052.495c.275.16.55.359.737.626c.185.263.281.587.341.9c.063.324.1.713.125 1.16c.048.886.048 2.102.048 3.678v1.601c0 6.101-4.608 9.026-7.348 10.224l-.027.011c-.34.149-.66.288-1.027.382c-.387.1-.799.142-1.348.142c-.55 0-.96-.042-1.348-.142c-.367-.094-.687-.233-1.027-.382l-.027-.011C6.858 21.017 2.25 18.092 2.25 11.99v-1.6c0-1.576 0-2.792.048-3.679c.025-.446.062-.835.125-1.16c.06-.312.156-.636.34-.9c.188-.266.463-.465.738-.625c.285-.165.64-.328 1.052-.495c.818-.332 1.962-.724 3.443-1.23zM12 2.75c-.658 0-1.305.212-2.92.764l-.572.196c-1.513.518-2.616.896-3.39 1.21a7 7 0 0 0-.864.404a2 2 0 0 0-.208.139a.4.4 0 0 0-.055.05a.4.4 0 0 0-.032.074q-.03.082-.063.248a7 7 0 0 0-.1.958c-.046.841-.046 2.015-.046 3.624v1.574c0 5.176 3.87 7.723 6.449 8.849c.371.162.586.254.825.315c.228.059.506.095.976.095s.748-.036.976-.095c.24-.06.454-.153.825-.315c2.58-1.126 6.449-3.674 6.449-8.849v-1.574c0-1.609 0-2.783-.046-3.624a7 7 0 0 0-.1-.958a2 2 0 0 0-.063-.248a.4.4 0 0 0-.032-.074a.4.4 0 0 0-.055-.05a2 2 0 0 0-.208-.14a7 7 0 0 0-.864-.402c-.774-.315-1.877-.693-3.39-1.21l-.573-.197C13.305 2.962 12.658 2.75 12 2.75" />
                                 </g>
                             </svg>
-                        </NavLink>
+                        </NavLink> */}
                         <NavLink to='/role' className={({ isActive }) => isActive ? 'dash-icon-wrapper active' : 'dash-icon-wrapper'}>
                             <svg aria-hidden="true" role="img" className="iconify iconify--solar" width="25" height="25" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -97,20 +150,23 @@ export function Admin() {
                                 </g>
                             </svg>
                         </NavLink>
-                        <NavLink to='/payment' className={({ isActive }) => isActive ? 'dash-icon-wrapper active' : 'dash-icon-wrapper'}>
+                        {/* <NavLink to='/payment' className={({ isActive }) => isActive ? 'dash-icon-wrapper active' : 'dash-icon-wrapper'}>
                             <svg aria-hidden="true" role="img" className="iconify iconify--solar" width="25" height="25" viewBox="0 0 24 24" fill="currentColor">
                                 <path fill="currentColor" fillRule="evenodd" clipRule="evenodd" d="M7.099 1.25H16.9c1.017 0 1.717 0 2.306.204a3.8 3.8 0 0 1 2.348 2.412l-.713.234l.713-.234c.196.597.195 1.307.195 2.36v14.148c0 1.466-1.727 2.338-2.864 1.297a.196.196 0 0 0-.271 0l-.484.442c-.928.85-2.334.85-3.262 0a.907.907 0 0 0-1.238 0c-.928.85-2.334.85-3.262 0a.907.907 0 0 0-1.238 0c-.928.85-2.334.85-3.262 0l-.483-.442a.196.196 0 0 0-.272 0c-1.137 1.04-2.864.169-2.864-1.297V6.227c0-1.054 0-1.764.195-2.361a3.8 3.8 0 0 1 2.348-2.412c.59-.205 1.289-.204 2.306-.204m.146 1.5c-1.221 0-1.642.01-1.96.121A2.3 2.3 0 0 0 3.87 4.334c-.111.338-.12.784-.12 2.036v14.004c0 .12.059.192.134.227a.2.2 0 0 0 .11.018a.2.2 0 0 0 .107-.055a1.695 1.695 0 0 1 2.296 0l.483.442a.907.907 0 0 0 1.238 0a2.407 2.407 0 0 1 3.262 0a.907.907 0 0 0 1.238 0a2.407 2.407 0 0 1 3.262 0a.907.907 0 0 0 1.238 0l.483-.442a1.695 1.695 0 0 1 2.296 0c.043.04.08.052.108.055a.2.2 0 0 0 .109-.018c.075-.035.135-.108.135-.227V6.37c0-1.252-.01-1.698-.12-2.037a2.3 2.3 0 0 0-1.416-1.462c-.317-.11-.738-.12-1.959-.12zM15 7.44a.75.75 0 0 1 .06 1.06l-3.572 4a.75.75 0 0 1-1.119 0l-1.428-1.6a.75.75 0 0 1 1.118-1l.87.974l3.012-3.373A.75.75 0 0 1 15 7.44M6.75 15.5a.75.75 0 0 1 .75-.75h9a.75.75 0 0 1 0 1.5h-9a.75.75 0 0 1-.75-.75" />
                             </svg>
-                        </NavLink>
+                        </NavLink> */}
                     </div>
-                    <section id="toggle-section" className={isOpen ? "closed" : "open"} ref={sidebarRef}>
+                    <section id="toggle-section" className={isDesktop || isOpen ? "open" : "closed"} ref={sidebarRef}>
                         <div className="Nav-content">
                             <div className="navbar-nav mb-2 mb-lg-0 pt-2">
                                 <div className="d-flex justify-content-between">
                                     <p className='brand'>ShoesX</p>
-                                    <button className="close-btn" onClick={() => setIsOpen(true)}>
-                                        <i className="bi bi-x-lg"></i>
-                                    </button>
+                                    {/* Only show close button on mobile */}
+                                    {!isDesktop && (
+                                        <button className="close-btn" onClick={closeSidebar}>
+                                            <i className="bi bi-x-lg"></i>
+                                        </button>
+                                    )}
                                 </div>
                                 <div>
                                     <ul className="list-section">
@@ -202,7 +258,7 @@ export function Admin() {
                                                 </ul>
                                             )}
                                         </li>
-                                        <li className="item">
+                                        {/* <li className="item">
                                             <Link
                                                 to="/order"
                                                 className={`item-btn ${location.pathname.startsWith("/order") ? "active" : ""}`}
@@ -225,8 +281,8 @@ export function Admin() {
                                                 </svg>
                                                 Order
                                             </Link>
-                                        </li>
-                                        <li className="item">
+                                        </li> */}
+                                        {/* <li className="item">
                                             <Link
                                                 to="/user"
                                                 className={`item-btn ${location.pathname.startsWith("/user") ? "active" : ""}`}
@@ -247,7 +303,7 @@ export function Admin() {
                                                 </svg>
                                                 Users
                                             </Link>
-                                        </li>
+                                        </li> */}
                                         <li className="item">
                                             <Link
                                                 to="/role"
@@ -275,7 +331,7 @@ export function Admin() {
                                                 Role
                                             </Link>
                                         </li>
-                                        <li className="item">
+                                        {/* <li className="item">
                                             <Link
                                                 to="/payment"
                                                 className={`item-btn ${location.pathname.startsWith("/payment") ? "active" : ""}`}
@@ -298,18 +354,18 @@ export function Admin() {
                                                 </svg>
                                                 Payment
                                             </Link>
-                                        </li>
+                                        </li> */}
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </section>
-                    <div className={`main-section ${!isOpen ? "full" : ""}`}>
-                        <nav className={`navbar navbar-expand-lg ${!isOpen ? "full" : ""}`}>
-                            <div className={`d-flex justify-content-between align-items-center responsive-width ${isOpen ? "open" : "closed"}`}
+                    <div className="main-section" style={getMainSectionMargin()}>
+                        <nav className="navbar navbar-expand-lg" style={getNavbarStyle()}>
+                            <div className={`d-flex justify-content-between align-items-center responsive-width ${(isDesktop || isOpen) ? "open" : "closed"}`}
                                 id="navbar-width">
                                 <div className="d-block d-lg-none">
-                                    <button className="navbar-toggler Navbar-toggler" onClick={() => setIsOpen(!isOpen)}>
+                                    <button className="navbar-toggler Navbar-toggler" onClick={() => setIsOpen((prev) => !prev)}>
                                         <span className="navbar-toggler-icon"></span>
                                     </button>
                                 </div>
@@ -366,15 +422,14 @@ export function Admin() {
                                         )}
                                     </div>
                                 </div>
-                                <div className='d-none d-lg-flex align-items-center gap-3'>
-                                    <div className='icons1 d-flex m-0'>
-                                    </div>
-                                    <div class="dropdown">
-                                        <img src={ProfileImg} className='img-fluid' data-bs-toggle="dropdown" aria-expanded="false" />
-                                        <ul class="dropdown-menu">
+                                <div className='d-lg-flex d-md-none d-none align-items-center gap-3 ms-auto'>
+                                    <div className='icons1 d-flex m-0'></div>
+                                    <div className="dropdown">
+                                        <img src={ProfileImg} className='img-fluid' data-bs-toggle="dropdown" aria-expanded="false" style={{ width: 40, height: 40, borderRadius: '50%' }} />
+                                        <ul className="dropdown-menu">
                                             <li>
                                                 <Link to={'/profile'} className='text-decoration-none'>
-                                                    <a class="dropdown-item d-flex gap-2 align-items-center" href="#">
+                                                    <a className="dropdown-item d-flex gap-2 align-items-center" href="#">
                                                         <img src={ProfileImg} className='img-fluid' />
                                                         <div>
                                                             <p className='m-0'>{name}</p>
@@ -383,7 +438,7 @@ export function Admin() {
                                                 </Link>
                                             </li>
                                             <hr className='m-1' />
-                                            <li><a class="dropdown-item d-flex gap-2 align-items-center" href="#" onClick={() => navigate('/change-password')}><i class="fa-solid fa-rotate-left"></i>Change Password</a></li>
+                                            <li><a className="dropdown-item d-flex gap-2 align-items-center" href="#" onClick={() => navigate('/change-password')}><i className="fa-solid fa-rotate-left"></i>Change Password</a></li>
                                             <li>
                                                 <button
                                                     onClick={handleLogout}
@@ -499,7 +554,7 @@ export function Admin() {
                             </div>
                         </nav>
                         <div className='content-wrapper'>
-                            <Outlet />
+                            <Outlet context={{ closeSidebar }} />
                         </div>
                     </div>
                 </div>

@@ -31,7 +31,7 @@
 }
 
 .dashboard-icon-sec {
-  border-right: 1px solid #E0E6EB;
+  border-right: 1px solid #e0e6eb;
   width: 100px;
   padding: 20px;
   position: fixed;
@@ -47,7 +47,7 @@
   height: 100vh;
   background-color: #fff;
   color: black;
-  box-shadow: 5px 0px 10px #F1F3F6;
+  box-shadow: 5px 0px 10px #f1f3f6;
   overflow: hidden;
   position: fixed;
   top: 0;
@@ -69,7 +69,7 @@
   margin-left: 100px;
   width: 100%;
   padding: 10px;
-  background-color: #F8FAFD;
+  background-color: #f8fafd;
   height: 100%;
   min-height: 100vh;
   flex-grow: 1;
@@ -101,7 +101,7 @@ nav.navbar {
   top: 0;
   left: 100px;
   right: 0;
-  background-color: #F8FAFD;
+  background-color: #f8fafd;
   padding: 10px 20px;
   z-index: 999;
   transition: left 0.3s ease-in-out;
@@ -151,8 +151,8 @@ nav.navbar.full {
   width: 100%;
 }
 .list-section .item .item-btn:hover, .list-section .item .item-btn:focus, .list-section .item .item-btn.active {
-  background-color: #DFF3FF;
-  color: #00A1FF;
+  background-color: #dff3ff;
+  color: #00a1ff;
 }
 .list-section .item .ecommerce-btn {
   background: none;
@@ -183,7 +183,7 @@ nav.navbar.full {
   transition: color 0.3s ease;
 }
 .submenu li a.active, .submenu li a:hover {
-  color: #00A1FF;
+  color: #00a1ff;
 }
 
 .category-btn {
@@ -214,7 +214,7 @@ nav.navbar.full {
 
 .modal-search-bar {
   width: 100%;
-  border: 1px solid #00A1FF;
+  border: 1px solid #00a1ff;
   border-radius: 20px;
   font-family: "satoshi-medium";
   padding: 5px 15px;
@@ -317,7 +317,7 @@ nav.navbar.full {
 }
 
 .responsive-width.open {
-  width: calc(100% - 100px);
+  width: calc(81% - 100px);
 }
 
 .responsive-width.closed {
