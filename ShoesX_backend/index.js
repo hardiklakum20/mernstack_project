@@ -65,7 +65,7 @@ app.use('/api', CategoryRouter);
 app.use('/api', SizeRouter);
 app.use('/api', ColorRouter);
 app.use('/api', BrandRouter);
-app.use('/public/images', express.static('public/images'));
+// app.use('/public/images', express.static('public/images'));
 app.use('/api', ProductRouter);
 app.use('/api', VarientRouter);
 app.use('/api', UserRouter);

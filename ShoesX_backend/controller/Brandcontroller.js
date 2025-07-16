@@ -4,7 +4,7 @@ const BrandModal = require("../modal/BrandModal");
 const addBrand = async (req, res) => {
     try {
         const { brand, status, categories } = req.body;
-        const image = `/public/images/${req.file.filename}`;
+        const image = req.file?.filename;
 
         const existingBrand = await BrandModal.findOne({ brand });
         if (existingBrand) {

@@ -121,7 +121,7 @@ export function Variants() {
                                                     <td>{item.productName}</td>
                                                     <td>
                                                         <img
-                                                            src={`${process.env.REACT_APP_IMAGE}/${v.images?.[0]}`}
+                                                            src={`${v.images?.[0]}`}
                                                             alt='variant'
                                                             style={{ width: "35px", height: "35px", objectFit: "cover" }}
                                                         />

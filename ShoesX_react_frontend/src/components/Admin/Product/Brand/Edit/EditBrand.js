@@ -85,7 +85,7 @@ export function EditBrand() {
     useEffect(() => {
         fetchCategories();
         if (state?.image) {
-            setPreviewUrl(`${process.env.REACT_APP_IMAGE}${state.image}`);
+            setPreviewUrl(`${process.env.REACT_APP_CLOUD_BASE_URL}${state.image}`);
             setShowImg(true);
         }
     }, [state]);
