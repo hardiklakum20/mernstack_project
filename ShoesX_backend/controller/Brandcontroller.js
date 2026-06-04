@@ -1,6 +1,10 @@
 const BrandModal = require("../modal/BrandModal");
 
 
+
+
+
+
 const addBrand = async (req, res) => {
     try {
         const { brand, status, categories } = req.body;
